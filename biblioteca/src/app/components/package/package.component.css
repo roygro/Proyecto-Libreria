@@ -1,0 +1,149 @@
+h1{
+  min-height: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*background: -webkit-radial-gradient(#43766C,#B19470);*/
+}
+
+.container span {
+  /*display: inline;*/
+  display: flex;
+  flex-direction: line;
+}
+
+.container span[style*="--l"] {
+  display: var(--l);
+  white-space: nowrap;
+}
+
+.container span {
+  font-size: 70pt;
+  font-weight: bold;
+  position: relative;
+  font-family: "Fredoka One";
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+.container span ::before {
+  content: var(--l);
+  position: absolute;
+  transform: scale(1.1);
+  filter: blur(15px);
+}
+
+.container span ::after{
+  content: var(--l);
+  position: absolute;
+  top: 80%;
+  left: 0%;
+  filter: blur(30px);
+  transform: rotatex(50deg);
+}
+
+.container span:hover{
+filter: contrast(250%);
+}
+
+.container span:nth-child(1){
+  color: #40534C;
+}
+
+.container span:nth-child(2){
+  color: #43766C;
+}
+
+.container span:nth-child(3){
+  color: #B19470;
+}
+
+.container span:nth-child(4){
+  color: #D6BD98;
+}
+
+.container span:nth-child(5){
+  color: #76453B;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: center;
+  justify-content: center; /* Centra horizontalmente los botones */
+  padding: 20px;
+  padding-top: 100px; /* Ajusta este valor para mover los botones hacia abajo */
+}
+
+.left-section {
+  display: flex;
+  gap: 60px; /* Espaciado entre botones */
+}
+
+
+.paquete {
+  font-size: 40px; /* Ajusta el tamaño de fuente según tus necesidades */
+  padding: 40px 90px; /* Ajusta el espaciado interno del botón */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #CCC; /* Añade un borde para mejor visualización */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #B5C18E; /* Color de fondo */
+  color: #FFFFFF; /* Color de la tipografía */
+  transition: background-color 0.3s; /* Transición suave */
+  margin-bottom: 5px; /* Espaciado inferior para la caja de texto */
+}
+
+.paquete h2 {
+  font-size: 36px;
+  font-family: 'Fredoka One', sans-serif;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contiene{
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.costo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level-content {
+  text-align: center;
+}
+
+.btn-pago {
+  font-size: 24px; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-family: 'Fredoka One';
+  padding: 15px 30px; /* Ajusta el espaciado interno del botón */
+  background-color: #677D6A; /* Color de fondo */
+  color: #FFFFFF; /* Color de la tipografía */
+  border: 1px solid #CCC; /* Añade un borde para mejor visualización */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.btn-pago:hover {
+  background-color: #B5C18E; /* Color de fondo al pasar el ratón */
+}

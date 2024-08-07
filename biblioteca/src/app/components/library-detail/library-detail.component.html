@@ -1,0 +1,150 @@
+<!--  <div class="container">
+  <div class="row">
+       Primer contenedor ->
+      <div class="col-md-6">
+          <div class="card">
+              <div class="row">
+                  <div class="col-md-6">
+                      <img src="https://m.media-amazon.com/images/I/81ZPr8asmsL._AC_UF1000,1000_QL80_.jpg" class="card-img-top img-fluid" alt="Boulevard" style="width: 500px; height: 550px;">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="card-body">
+                          <li class="list-group-item" style="margin-bottom: 30px;">
+                              <h5 class="card-title text-center" style="font-size: 40px;">Boulevard</h5>
+                          </li>
+                          <p class="card-text" style="font-size: 18px;">
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">ISBN:</span> 9786075509594
+                                  <br>
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Autor:</span> Flor M. Salvador
+                                  <br>
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Idioma:</span> Español
+                                  <br>
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Precio:</span> MXN 329.00
+                              </li>
+                          </p>
+                          <li class="list-group-item" style="margin-bottom: 30px;">
+                              <p class="card-text" style="font-size: 18px;">
+                                  <span class="fa fa-star checked"></span>
+                                  <span class="fa fa-star checked"></span>
+                                  <span class="fa fa-star checked"></span>
+                                  <span class="fa fa-star checked"></span>
+                                  <span class="fa fa-star unchecked"></span>
+                              </p>
+                          </li>
+                          <a href="library/carrito" class="btn btn-primary" style="font-size: 18px;">Agregar a mi bolsa</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!- Segundo contenedor ->
+      <div class="col-md-6">
+          <div class="card">
+              <div class="row">
+                  <div class="col-md-6">
+                      <img src="https://m.media-amazon.com/images/I/81S5G2aW6bL._AC_UF894,1000_QL80_.jpg" class="card-img-top img-fluid" alt="Boulevard" style="width: 500px; height: 550px;">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="card-body">
+                          <div class="card-header">
+                              <h5 class="card-title text-center">Detalles del libro</h5>
+                          </div>
+                          <ul>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Número de páginas:</span> 488
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Año de publicación:</span> 2022
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Edición:</span> 1
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Editorial:</span> Contraluz
+                              </li>
+                              <li class="list-group-item" style="margin-bottom: 20px;">
+                                  <span class="font-weight-bold">Edad sugerida:</span> ADU Audiencia mayor a 18 años
+                              </li>
+                              <li class="list-group-item">
+                                  <span class="font-weight-bold">Formato:</span> Rústica
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+-->
+
+<div *ngIf="bookDetails" class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-6">
+              <img [src]="bookDetails.image" class="card-img-top img-fluid" [alt]="bookDetails.title" style="width: 500px; height: 550px;">
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <li class="list-group-item" style="margin-bottom: 30px;">
+                  <h5 class="card-title text-center" style="font-size: 40px;">{{ bookDetails.title }}</h5>
+                </li>
+                <p class="card-text" style="font-size: 18px;">
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">ISBN:</span> {{ bookDetails.isbn }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Autor:</span> {{ bookDetails.author }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Idioma:</span> {{ bookDetails.language }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Precio:</span> {{ bookDetails.price }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">No. de Páginas:</span> {{ bookDetails.pages }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Año de publicación:</span> {{ bookDetails.year }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Edición:</span> {{ bookDetails.edition }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Editorial:</span> {{ bookDetails.publisher }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Edad recomendada:</span> {{ bookDetails.suggestedAge }}
+                    <br>
+                  </li>
+                  <li class="list-group-item" style="margin-bottom: 20px;">
+                    <span class="font-weight-bold">Formato:</span> {{ bookDetails.format }}
+                  </li>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

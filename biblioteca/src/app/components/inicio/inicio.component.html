@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="inicio.component.css">
+    <title>Inicio de Sesión</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Inicio de Sesión Usuario</h2>
+        <form action="/login-user" method="POST">
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2>Registrar Biblioteca</h2>
+        <form action="/register-library" method="POST">
+            <div class="form-group">
+                <label for="library-name">Nombre de la Biblioteca</label>
+                <input type="text" id="library-name" name="library-name" required>
+            </div>
+            <div class="form-group">
+                <label for="library-address">Dirección</label>
+                <input type="text" id="library-address" name="library-address" required>
+            </div>
+            <div class="form-group">
+                <label for="library-contact">Contacto</label>
+                <input type="text" id="library-contact" name="library-contact" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Registrar Biblioteca</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+

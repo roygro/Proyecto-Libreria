@@ -1,0 +1,12 @@
+{
+    "package" :[
+        {
+            "id" : "1",
+            "idBiblioteca":"",
+            "nomPaquete": "Paquete Basico",
+            "description": "El paquete incluye -Subida de hasta 200 libros -Soporte de metadatos básicosAsistencia técnica vía correo electrónico -Opción de actualización a paquetes superiores",
+            "durPaquete":"Duracion: Un mes",
+            "precioPaquete":"costo: 200"
+        }
+    ]
+}

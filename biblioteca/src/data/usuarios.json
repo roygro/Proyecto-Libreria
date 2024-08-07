@@ -1,0 +1,11 @@
+{
+    "usuarios" :[
+        {
+            "id" : "1",
+            "nombre":"Mirza",
+            "email": "natzllyuni@gmail.com",
+            "telefono":"4155668881",
+            "contraseña":"hola"
+        }
+    ]
+}

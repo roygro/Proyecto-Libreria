@@ -1,0 +1,21 @@
+.detalles-del-libro {
+    margin-right: 0;
+    padding-right: 0;
+    width: 100%; /* o cualquier otro valor que desees */
+  }
+
+  .list-group-item {
+    margin-bottom: 20px;
+  }
+
+  .card-footer {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+  }
+  
+  .card-footer.btn {
+    float: right;
+    margin-right: 10px;
+  }
+  

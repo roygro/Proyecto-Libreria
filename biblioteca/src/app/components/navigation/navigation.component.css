@@ -1,0 +1,48 @@
+.navbar {
+  background-color: #343a40; /* Color de fondo de la barra de navegación */
+}
+
+.navbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navbar-brand img,
+.navbar img {
+  max-height: 65px;
+}
+
+.navbar .form-control {
+  width: 290px; /* Ajusta el ancho del campo de búsqueda */
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+  /* Barra de las opciones*/
+  .navbar {
+    background-color: #343a40; /* Color oscuro de la barra */
+  }
+  
+  .nav-link {
+    color: #ffffff; /* Color de los enlaces */
+  }
+  
+  .nav-link:hover {
+    color: #ffcc00; /* Color de los enlaces al pasar el ratón por encima */
+  }
+  
+  .nav-link.active {
+    color: #ff5733; /* Color del enlace activo */
+  }
+  
+  .nav-item {
+    margin: 0 10px; /* Espaciado entre los elementos de la navegación */
+  }
+  
+
+  
+  
+  

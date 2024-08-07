@@ -1,0 +1,19 @@
+
+  /*cards */
+  .card-container {
+    display: flex;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    align-items: center; /* Centra las tarjetas verticalmente si el contenedor tiene altura */
+    gap: 1rem; /* Espacio entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a la siguiente línea si no caben en una sola fila */
+    padding: 1rem; /* Espacio alrededor del contenedor */
+  }
+  
+  .card {
+    margin: 0.5rem; /* Espacio alrededor de cada tarjeta */
+  }
+
+  .carousel-item{
+    align-items: center;
+  }
+  
