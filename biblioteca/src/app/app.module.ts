@@ -21,6 +21,7 @@ import { RomanceComponent } from './components/romance/romance.component';
 import { JuegosComponent } from './components/juegos/juegos.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LibraryComponent } from './components/library/library.component';
 
 
 
@@ -41,7 +42,8 @@ import { RegistroComponent } from './components/registro/registro.component';
         RomanceComponent,
         JuegosComponent,
         InicioSesionComponent,
-        RegistroComponent
+        RegistroComponent,
+        LibraryComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent], imports: [BrowserModule,

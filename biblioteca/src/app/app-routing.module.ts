@@ -11,9 +11,9 @@ import { CienciaFComponent } from './components/ciencia-f/ciencia-f.component';
 import { FantasiaComponent } from './components/fantasia/fantasia.component';
 import { RomanceComponent } from './components/romance/romance.component';
 import { JuegosComponent } from './components/juegos/juegos.component';
-import { PayComponent } from './components/pay/pay.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LibraryComponent } from './components/library/library.component';
 
 const routes: Routes = [
   {
@@ -73,10 +73,14 @@ const routes: Routes = [
     path: 'juegos',
     component: JuegosComponent
   },
-  {
-    path: 'pago',
-    component: PayComponent
+  { 
+    path: 'libraries', 
+    component: LibraryComponent 
   },
+  { 
+    path: 'library/:id', 
+    component: LibraryDetailComponent 
+  }, // Detalle de biblioteca
   {
     path: 'registro',
     component: RegistroComponent

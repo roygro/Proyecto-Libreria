@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api'; // URL de tu backend
+  private apiUrl = 'http://localhost:3000/api/users'; // URL del backend
 
   constructor(private http: HttpClient) {}
 
@@ -22,13 +21,16 @@ export class AuthService {
     );
   }
 
+  
   login(correo: string, contrasena: string): Observable<any> {
     const body = { correo, contrasena };
     return this.http.post<any>(`${this.apiUrl}/login`, body).pipe(
       catchError(error => {
         console.error('Error en el inicio de sesión:', error);
-        return throwError(() => new Error('Error en el inicio de sesión'));
+        const errorMessage = error?.error?.message || 'Error en el inicio de sesión';
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
+  
 }

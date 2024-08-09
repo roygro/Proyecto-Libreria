@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Biblioteca</title>
+    <link rel="stylesheet" href="./library.component.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Formulario para registrar nueva biblioteca -->
+        <div class="container-form">
+            <form class="sign-in" (ngSubmit)="onSubmit()">
+                <h2>Registra tu Biblioteca</h2>
+                <span>Llena los siguientes campos para registrar una nueva biblioteca</span>
+                
+                <div class="container-input">
+                    <input type="text" placeholder="Nombre de la Biblioteca" [(ngModel)]="library.nombre" name="nombre" required>
+                </div>
+                <div class="container-input">
+                    <input type="email" placeholder="Email" [(ngModel)]="library.correo" name="correo" required>
+                </div>
+                <div class="container-input">
+                    <input type="password" placeholder="Contraseña" [(ngModel)]="library.contrasena" name="contrasena" required>
+                </div>
+                <div class="container-input">
+                    <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="library.confirmarContrasena" name="confirmarContrasena" required>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Colonia" [(ngModel)]="library.colonia" name="colonia" required>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Calle" [(ngModel)]="library.calle" name="calle" required>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Número" [(ngModel)]="library.numero" name="numero" required>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Tipo de Tarjeta" [(ngModel)]="library.tarjeta" name="tarjeta" required>
+                </div>
+                
+                <button class="button" type="submit">REGISTRARSE</button>
+                <p *ngIf="error" class="error">{{ error }}</p>
+            </form>
+        </div>
+
+        <!-- Sección de bienvenida -->
+        <div class="container-welcome">
+            <div class="welcome-sign-up welcome">
+                <h3>¡Hola!</h3>
+                <p>¿Ya tienes una cuenta? Inicia sesión <a routerLink="/inicioSesion">aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
