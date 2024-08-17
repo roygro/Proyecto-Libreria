@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #343a40; /* Color de fondo de la barra de navegación */
+  background-color: #6B8A7A; /* Color de fondo de la barra de navegación */
 }
 
 .navbar .container-fluid {
@@ -23,7 +23,7 @@
 
   /* Barra de las opciones*/
   .navbar {
-    background-color: #343a40; /* Color oscuro de la barra */
+    background-color: #6B8A7A; /* Color oscuro de la barra */
   }
   
   .nav-link {

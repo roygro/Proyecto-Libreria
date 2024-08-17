@@ -36,8 +36,14 @@
                     <input type="text" placeholder="Número" [(ngModel)]="library.numero" name="numero" required>
                 </div>
                 <div class="container-input">
-                    <input type="text" placeholder="Tipo de Tarjeta" [(ngModel)]="library.tarjeta" name="tarjeta" required>
+                    <label for="card-type">Tipo de Tarjeta:</label>
+                    <select id="card-type" [(ngModel)]="library.tarjeta" name="tarjeta" required>
+                        <option value="credit">Crédito</option>
+                        <option value="debit">Débito</option>
+                    </select>
                 </div>
+                
+
                 
                 <button class="button" type="submit">REGISTRARSE</button>
                 <p *ngIf="error" class="error">{{ error }}</p>

@@ -23,7 +23,7 @@ export class InicioSesionComponent {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
           if (response.role === 'admin') {
-            this.router.navigate(['/libraries']);
+            this.router.navigate(['/administrador']);
           } else if (response.role === 'user') {
             this.router.navigate(['/home']);
           } else {

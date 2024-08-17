@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Biblioteca</title>
+    <link rel="stylesheet" href="edicion-biblioteca.component.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Panel de Control</h2>
+        <ul>
+            <li><a href="#">
+                 <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
+                 <span class="titulo">Inicio</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="person-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Usuarios</span>
+               </a>
+            </li>
+            <li><a routerLink="edicionBiblioteca/:libraryId">
+                <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Bibliotecas</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Libros</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Salir</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <section id="EditLibraries" class="container">
+        <h1>Editar Biblioteca</h1>
+        <form [formGroup]="editLibraryForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" formControlName="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" formControlName="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" formControlName="contrasena" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="colonia">Colonia:</label>
+                        <input type="text" id="colonia" formControlName="colonia" required>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="calle">Calle:</label>
+                        <input type="text" id="calle" formControlName="calle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número:</label>
+                        <input type="number" id="numero" formControlName="numero" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarjeta">Tipo de Tarjeta:</label>
+                        <select id="tarjeta" formControlName="tarjeta">
+                            <option value="credit">Crédito</option>
+                            <option value="debit">Débito</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-save">Guardar Cambios</button>
+            </div>
+        </form>
+    </section>
+
+</body>
+</html>

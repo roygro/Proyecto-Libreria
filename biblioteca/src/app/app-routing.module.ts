@@ -14,6 +14,8 @@ import { JuegosComponent } from './components/juegos/juegos.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LibraryComponent } from './components/library/library.component';
+import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edicion-biblioteca.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 const routes: Routes = [
   {
@@ -86,10 +88,20 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
+    path: 'edicionBiblioteca/:libraryId',
+    component: EdicionBibliotecaComponent
+  },
+  {
+    path: 'administrador',
+    component: EditorComponent
+  },
+ 
+  {
     path: '**',
     redirectTo: '/home'
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

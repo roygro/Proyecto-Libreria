@@ -54,7 +54,7 @@ exports.createLibrary = async (req, res) => {
 exports.updateLibrary = async (req, res) => {
   try {
     const [updated] = await Library.update(req.body, {
-      where: { idLibrary: req.params.id }
+      where: { idLibrary: req.params.id } // Asegúrate de que 'idLibrary' sea correcto
     });
     if (updated) {
       const updatedLibrary = await Library.findByPk(req.params.id);
@@ -74,7 +74,7 @@ exports.deleteLibrary = async (req, res) => {
       where: { idLibrary: req.params.id }
     });
     if (deleted) {
-      res.status(204).json({ message: 'Biblioteca eliminada' });
+      res.status(200).json({ message: 'Biblioteca eliminada' });
     } else {
       res.status(404).json({ message: 'Biblioteca no encontrada' });
     }

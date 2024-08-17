@@ -22,6 +22,10 @@ import { JuegosComponent } from './components/juegos/juegos.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LibraryComponent } from './components/library/library.component';
+import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edicion-biblioteca.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { LibraryService } from './components/library.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -43,16 +47,23 @@ import { LibraryComponent } from './components/library/library.component';
         JuegosComponent,
         InicioSesionComponent,
         RegistroComponent,
-        LibraryComponent
+        LibraryComponent,
+        EdicionBibliotecaComponent,
+        EditorComponent
     ],
+
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         RouterModule.forRoot([]),
         AppRoutingModule,
-        FormsModule], providers: [
-        LibrarysService
-        /*GamesService*/
-        ,
+        FormsModule,
+        ReactiveFormsModule
+    ], 
+    providers: [
+        LibraryService,
+        LibrarysService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AppModule { }
