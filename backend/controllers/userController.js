@@ -1,6 +1,8 @@
 // controllers/userController.js
-
+const jwt = require('jsonwebtoken'); // Asegúrate de tener este paquete instalado
 const User = require('../models/user');
+const Library = require('../models/library');
+
 
 exports.register = async (req, res) => {
   const { nombre, correo, telefono, contrasena, role } = req.body;
@@ -28,6 +30,7 @@ exports.register = async (req, res) => {
   }
 };
 
+// Método de login en el backend
 exports.login = async (req, res) => {
   const { correo, contrasena } = req.body;
   try {
@@ -47,12 +50,17 @@ exports.login = async (req, res) => {
 
     console.log('Contraseña coincide, acceso permitido');
 
-    // Enviar la respuesta JSON con token y role
+    // Verificar si el usuario tiene una biblioteca asociada
+    const library = await Library.findOne({ where: { idUser: user.idUser } });
+    const hasLibrary = !!library;
+
+    // Enviar la respuesta JSON con token, role y hasLibrary
     const token = 'your_jwt_token_here'; // Aquí deberías generar un token JWT
     res.status(200).json({
       message: 'Inicio de sesión exitoso',
-      token: token, 
-      role: user.role
+      token: token,
+      role: user.role,
+      hasLibrary: hasLibrary
     });
 
   } catch (error) {
@@ -60,3 +68,8 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: 'Error al iniciar sesión', error: error.message });
   }
 };
+
+
+
+
+

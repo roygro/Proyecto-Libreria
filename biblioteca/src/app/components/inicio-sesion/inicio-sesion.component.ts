@@ -15,19 +15,21 @@ export class InicioSesionComponent {
 
   onSubmit() {
     this.error = ''; 
-    
+ 
     this.authService.login(this.credentials.correo, this.credentials.contrasena).subscribe({
       next: (response) => {
         console.log(response); // Verifica la respuesta aquí
-        if (response && response.token && response.role) {
+
+        if (response && response.token && response.role !== undefined) {
+          // Guardar el token y el rol en el almacenamiento local
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
-          if (response.role === 'admin') {
+
+          // Redirigir en función de si el usuario tiene una biblioteca asociada
+          if (response.hasLibrary) {
             this.router.navigate(['/administrador']);
-          } else if (response.role === 'user') {
-            this.router.navigate(['/home']);
           } else {
-            this.error = 'Rol no reconocido';
+            this.router.navigate(['/home']);
           }
         } else {
           this.error = 'Respuesta del servidor no válida';
@@ -38,6 +40,5 @@ export class InicioSesionComponent {
         console.error('Error en la solicitud:', err);
       }
     });
-  }  
-  
+  }
 }

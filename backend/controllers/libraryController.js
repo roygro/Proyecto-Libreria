@@ -27,7 +27,7 @@ exports.getLibraryById = async (req, res) => {
 
 // Crear una nueva biblioteca
 exports.createLibrary = async (req, res) => {
-  const { nombre, correo, contrasena, colonia, calle, numero, tarjeta } = req.body;
+  const { nombre, correo, colonia, calle, numero, tarjeta } = req.body;
   try {
     // Verificar si el correo ya está registrado en la tabla library
     const existingLibrary = await Library.findOne({ where: { correo } });
@@ -45,7 +45,7 @@ exports.createLibrary = async (req, res) => {
     const newLibrary = await Library.create({
       nombre,
       correo, // correo del usuario que será el mismo en la tabla library
-      contrasena,
+      contrasena: user.contrasena, // Usar la contraseña del usuario
       colonia,
       calle,
       numero,
@@ -53,12 +53,15 @@ exports.createLibrary = async (req, res) => {
       idUser: user.idUser // Asociar la biblioteca con el idUser del usuario
     });
 
+    // Actualizar el rol del usuario a admin
+    await User.update({ role: 'admin' }, { where: { idUser: user.idUser } });
+
     res.status(201).json(newLibrary);
   } catch (error) {
-    res.status(500).json({ message: 'Error al crear la biblioteca', error });
+    console.error('Error al crear la biblioteca:', error);
+    res.status(500).json({ message: 'Error al crear la biblioteca', error: error.message });
   }
 };
-
 
 
 
