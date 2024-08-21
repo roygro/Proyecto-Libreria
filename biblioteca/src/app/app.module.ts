@@ -26,6 +26,7 @@ import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edic
 import { EditorComponent } from './components/editor/editor.component';
 import { LibraryService } from './components/library.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
 
 
 
@@ -49,7 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         RegistroComponent,
         LibraryComponent,
         EdicionBibliotecaComponent,
-        EditorComponent
+        EditorComponent,
+        EdicionLibrosComponent
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

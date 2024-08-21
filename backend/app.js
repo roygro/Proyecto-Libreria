@@ -1,23 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Importa el módulo cors
+const cors = require('cors');
 const sequelize = require('./config/database');
+
 const userRoutes = require('./routes/userRoutes');
 const libraryRoutes = require('./routes/libraryRoutes');
+const bookRoutes = require('./routes/bookRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configura cors para permitir solicitudes desde otros orígenes
 app.use(cors({
-  origin: 'http://localhost:4200' // URL de mi frontend
+  origin: 'http://localhost:4200'
 }));
 
+// Aplicar bodyParser.json globalmente
 app.use(bodyParser.json());
+
 app.use('/api/users', userRoutes);
 app.use('/api/libraries', libraryRoutes);
+app.use('/api/books', bookRoutes); // Asegúrate de agregar esta línea
 
-// Sincronizar el modelo con la base de datos
 sequelize.sync()
   .then(() => {
     app.listen(PORT, () => {
