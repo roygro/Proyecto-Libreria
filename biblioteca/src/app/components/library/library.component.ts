@@ -28,7 +28,6 @@ export class LibraryComponent {
       return;
     }
 
-    // Eliminar el campo confirmarContrasena antes de enviar al backend
     const { confirmarContrasena, ...libraryData } = this.library;
 
     this.libraryService.addLibrary(libraryData).subscribe({
@@ -36,7 +35,11 @@ export class LibraryComponent {
         this.router.navigate(['/']); // Redirige después de registrar
       },
       error: (err) => {
-        this.error = 'Error al registrar la biblioteca';
+        if (err.message === 'Correo no registrado') {
+          this.error = 'Este correo no está registrado, por favor regístrese con un correo válido';
+        } else {
+          this.error = 'Error al registrar la biblioteca';
+        }
         console.error('Error en la solicitud:', err);
       }
     });

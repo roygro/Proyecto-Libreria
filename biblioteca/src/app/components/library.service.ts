@@ -33,6 +33,9 @@ export class LibraryService {
   addLibrary(library: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, library).pipe(
       catchError((error) => {
+        if (error.status === 400 && error.error.message === 'Usuario no encontrado con ese correo') {
+          return throwError(() => new Error('Correo no registrado'));
+        }
         console.error('Error al crear la biblioteca:', error);
         return throwError(() => new Error('Error al crear la biblioteca'));
       })
