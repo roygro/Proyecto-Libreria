@@ -1,5 +1,3 @@
-// models/user.js
-
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
@@ -32,10 +30,7 @@ const User = sequelize.define('User', {
   }
 }, {
   tableName: 'users',
-  timestamps: false,
-  hooks: {
-    // No hay necesidad de un hook beforeCreate si no quieres encriptar las contraseñas
-  }
+  timestamps: false
 });
 
 module.exports = User;

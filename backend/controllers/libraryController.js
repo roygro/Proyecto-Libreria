@@ -25,30 +25,42 @@ exports.getLibraryById = async (req, res) => {
   }
 };
 
-// Crear una nueva entrada en la biblioteca
+// Crear una nueva biblioteca
 exports.createLibrary = async (req, res) => {
   const { nombre, correo, contrasena, colonia, calle, numero, tarjeta } = req.body;
   try {
-    // Verificar si el correo ya está registrado
+    // Verificar si el correo ya está registrado en la tabla library
     const existingLibrary = await Library.findOne({ where: { correo } });
     if (existingLibrary) {
-      return res.status(400).json({ message: 'Correo ya registrado' });
+      return res.status(400).json({ message: 'Este correo ya está asociado con otra biblioteca' });
     }
-    
+
+    // Verificar si el correo existe en la tabla users
+    const user = await User.findOne({ where: { correo } });
+    if (!user) {
+      return res.status(400).json({ message: 'Usuario no encontrado con ese correo' });
+    }
+
+    // Crear la nueva biblioteca y asociarla con el idUser del usuario
     const newLibrary = await Library.create({
       nombre,
-      correo,
+      correo, // correo del usuario que será el mismo en la tabla library
       contrasena,
       colonia,
       calle,
       numero,
-      tarjeta
+      tarjeta,
+      idUser: user.idUser // Asociar la biblioteca con el idUser del usuario
     });
+
     res.status(201).json(newLibrary);
   } catch (error) {
     res.status(500).json({ message: 'Error al crear la biblioteca', error });
   }
 };
+
+
+
 
 // Actualizar una entrada de la biblioteca
 exports.updateLibrary = async (req, res) => {
@@ -80,5 +92,19 @@ exports.deleteLibrary = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: 'Error al eliminar la biblioteca', error });
+  }
+};
+
+// Obtener todas las bibliotecas de un usuario específico
+exports.getLibrariesByUserId = async (req, res) => {
+  try {
+    const libraries = await Library.findAll({ where: { userId: req.params.userId } });
+    if (libraries.length > 0) {
+      res.status(200).json(libraries);
+    } else {
+      res.status(404).json({ message: 'No se encontraron bibliotecas para el usuario' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener las bibliotecas del usuario', error });
   }
 };

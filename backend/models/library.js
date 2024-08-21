@@ -1,11 +1,21 @@
+// models/library.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const User = require('./user');  // Importa el modelo User
 
 const Library = sequelize.define('Library', {
   idLibrary: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true
+  },
+  idUser: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'users',
+      key: 'idUser'
+    }
   },
   nombre: {
     type: DataTypes.STRING,
@@ -40,5 +50,8 @@ const Library = sequelize.define('Library', {
   tableName: 'library',
   timestamps: false
 });
+
+// Define la relación aquí
+Library.belongsTo(User, { foreignKey: 'idUser' });
 
 module.exports = Library;

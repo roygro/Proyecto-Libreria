@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./config/database');
+const { User, Library } = require('./models/relations');
 
 const userRoutes = require('./routes/userRoutes');
 const libraryRoutes = require('./routes/libraryRoutes');
