@@ -1,0 +1,97 @@
+<div class="wrapper">
+  <aside class="sidebar">
+    <h2>Panel de Control</h2>
+    <ul>
+      <li><a routerLink="/administrador">
+          <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
+          <span class="titulo">Inicio</span>
+        </a>
+      </li>
+      <li><a href="#">
+        <span class="icono"><ion-icon name="person-outline"></ion-icon></span>&nbsp;
+        <span class="titulo">Usuarios</span>
+       </a>
+      </li>
+      <li><a routerLink="/listarBibliotecas">
+        <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
+        <span class="titulo">Bibliotecas</span>
+        </a>
+      </li>
+      <li><a routerLink="/listarLibros">
+        <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
+        <span class="titulo">Libros</span>
+        </a>
+      </li>
+      <li><a href="#">
+        <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>&nbsp;
+        <span class="titulo">Salir</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="main-content">
+    <div class="container">
+      <h1>Crear Libro</h1>
+      <form [formGroup]="crearLibroForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nomBook">Nombre del Libro</label>
+          <input id="nomBook" formControlName="nomBook" class="form-control" />
+          <div *ngIf="crearLibroForm.get('nomBook')?.invalid && crearLibroForm.get('nomBook')?.touched" class="error">
+            El nombre del libro es obligatorio.
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+          <div *ngIf="crearLibroForm.get('descripcion')?.invalid && crearLibroForm.get('descripcion')?.touched" class="error">
+            La descripción es obligatoria.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="autor">Autor</label>
+          <input id="autor" formControlName="autor" class="form-control" />
+          <div *ngIf="crearLibroForm.get('autor')?.invalid && crearLibroForm.get('autor')?.touched" class="error">
+            El autor es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editorial">Editorial</label>
+          <input id="editorial" formControlName="editorial" class="form-control" />
+          <div *ngIf="crearLibroForm.get('editorial')?.invalid && crearLibroForm.get('editorial')?.touched" class="error">
+            La editorial es obligatoria.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="precioLibro">Precio</label>
+          <input id="precioLibro" formControlName="precioLibro" class="form-control" type="number" step="0.01" />
+          <div *ngIf="crearLibroForm.get('precioLibro')?.invalid && crearLibroForm.get('precioLibro')?.touched" class="error">
+            El precio es obligatorio y debe ser un número positivo.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Imagen URL</label>
+          <input id="image" formControlName="image" class="form-control" />
+          <div *ngIf="crearLibroForm.get('image')?.invalid && crearLibroForm.get('image')?.touched" class="error">
+            La URL de la imagen es obligatoria.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo Electrónico</label>
+          <input id="correo" formControlName="correo" class="form-control" />
+          <div *ngIf="crearLibroForm.get('correo')?.invalid && crearLibroForm.get('correo')?.touched" class="error">
+            El correo electrónico es obligatorio y debe ser válido.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear Libro</button>
+      </form>
+    </div>
+  </div>
+</div>

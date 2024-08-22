@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LibraryListComponent } from './components/library-list/library-list.component';
-import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryDetailComponent } from './components/library-detail/library-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { JuniorComponent } from './components/junior/junior.component';
@@ -17,6 +15,8 @@ import { LibraryComponent } from './components/library/library.component';
 import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edicion-biblioteca.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
+import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
+import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
 
 const routes: Routes = [
   {
@@ -31,14 +31,6 @@ const routes: Routes = [
   {
     path: 'library-detail/:id',
     component: LibraryDetailComponent
-  },
-  {
-    path: 'library',
-    component: LibraryListComponent
-  },
-  {
-    path: 'library/add',
-    component: LibraryFormComponent
   },
   {
     path: 'junior',
@@ -96,16 +88,19 @@ const routes: Routes = [
     path: 'administrador',
     component: EditorComponent
   },
- /* {
-    path: 'edicionLibro',
-    component: EdicionLibrosComponent
-  },*/
+  {
+    path: 'crearLibro',
+    component: CrearLibroComponent
+  },
   { path: 'listarBibliotecas', 
     component: ListarBibliotecasComponent
   },
   { path: 'listarLibros', 
-    component: LibraryListComponent
+    component: ListadoLibrosComponent
   },
+  /*{ path: 'editarLibro', 
+    component: EdicionLibrosComponent
+  },*/
 
  
   {

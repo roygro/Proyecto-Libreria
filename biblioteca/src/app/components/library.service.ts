@@ -29,6 +29,10 @@ export class LibraryService {
     );
   }
 
+  getLibraryByEmail(correo: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?correo=${correo}`);
+  }
+
   addLibrary(library: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, library).pipe(
       catchError((error: any) => {

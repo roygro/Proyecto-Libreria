@@ -1,0 +1,123 @@
+.wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Evita que aparezca una barra de desplazamiento en el contenedor principal */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #007F73;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a .icono {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    padding: 1px;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+    overflow: auto; /* Permite el desplazamiento si el contenido es más alto que el área visible */
+}
+
+.container {
+    max-width: 100%; /* Permite que el contenedor del formulario se ajuste al espacio disponible */
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    /*margin: 0;  Elimina cualquier margen que pueda causar desbordamiento */
+}
+
+h1 {
+    background-color: #007F73;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    margin: -40px -40px 20px -40px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group .form-control:focus {
+    border-color: #007F73;
+    outline: none;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 12px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 15px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.875em;
+  }
+  
+  .btn {
+    margin-top: 15px;
+  }
+  

@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LibraryFormComponent } from './library-form.component';
 
-describe('LibraryFormComponent', () => {
-  let component: LibraryFormComponent;
-  let fixture: ComponentFixture<LibraryFormComponent>;
+import { ListadoLibrosComponent } from './listado-libros.component';
+
+describe('ListadoLibrosComponent', () => {
+  let component: ListadoLibrosComponent;
+  let fixture: ComponentFixture<ListadoLibrosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LibraryFormComponent]
+      declarations: [ListadoLibrosComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(LibraryFormComponent);
+
+    fixture = TestBed.createComponent(ListadoLibrosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

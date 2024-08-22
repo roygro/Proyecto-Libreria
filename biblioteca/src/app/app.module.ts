@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { LibraryFormComponent } from './components/library-form/library-form.component';
-import { LibraryListComponent } from './components/library-list/library-list.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LibrarysService } from './services/library.service';
@@ -27,13 +25,15 @@ import { EditorComponent } from './components/editor/editor.component';
 import { LibraryService } from './components/library.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
+import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
+import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
+
+
 
 
 @NgModule({ declarations: [
         AppComponent,
         NavigationComponent,
-        LibraryFormComponent,
-        LibraryListComponent,
         LibraryDetailComponent,
         HomeComponent,
         JuniorComponent,
@@ -49,7 +49,9 @@ import { ListarBibliotecasComponent } from './components/listar-bibliotecas/list
         LibraryComponent,
         EdicionBibliotecaComponent,
         EditorComponent,
-        ListarBibliotecasComponent
+        ListarBibliotecasComponent,
+        ListadoLibrosComponent,
+        CrearLibroComponent
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

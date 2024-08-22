@@ -1,0 +1,63 @@
+<div class="container">
+    <aside class="sidebar">
+        <h2>Panel de Control</h2>
+        <ul>
+            <li><a href="administrador">
+                 <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
+                 <span class="titulo">Inicio</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="person-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Usuarios</span>
+               </a>
+            </li>
+            <li><a routerLink="/listarBibliotecas">
+                <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Bibliotecas</span>
+                </a>
+            </li>
+            <li><a href="/listarLibros">
+                <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Libros</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Salir</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+  
+    <main>
+      <h1>Listado de Libros</h1>
+      <table class="library-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let libro of libros">
+            <td>{{ libro.idBook }}</td>
+            <td>{{ libro.nomBook }}</td>
+            <td>{{ libro.autor }}</td>
+            <td>{{ libro.editorial }}</td>
+            <td>{{ libro.precioLibro | currency }}</td>
+            <td>
+              <button class="btn btn-edit" routerLink="/editarLibro">Editar</button>
+              <button class="btn btn-delete" (click)="deleteBook(libro.idBook)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn-new-book" routerLink="/crearLibro">Nuevo Libro</button>
+    </main>
+  </div>
+  
