@@ -17,6 +17,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
 import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
+import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
 
 const routes: Routes = [
   {
@@ -98,9 +99,9 @@ const routes: Routes = [
   { path: 'listarLibros', 
     component: ListadoLibrosComponent
   },
-  /*{ path: 'editarLibro', 
+  { path: 'editarLibro/:id', 
     component: EdicionLibrosComponent
-  },*/
+  },
 
  
   {

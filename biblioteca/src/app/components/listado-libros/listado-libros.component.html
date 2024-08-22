@@ -51,7 +51,7 @@
             <td>{{ libro.editorial }}</td>
             <td>{{ libro.precioLibro | currency }}</td>
             <td>
-              <button class="btn btn-edit" routerLink="/editarLibro">Editar</button>
+              <button class="btn btn-edit" [routerLink]="['/editarLibro', libro.idBook]">Editar</button>
               <button class="btn btn-delete" (click)="deleteBook(libro.idBook)">Eliminar</button>
             </td>
           </tr>

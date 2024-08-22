@@ -27,9 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
 import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
-
-
-
+import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -51,7 +49,8 @@ import { CrearLibroComponent } from './components/crear-libro/crear-libro.compon
         EditorComponent,
         ListarBibliotecasComponent,
         ListadoLibrosComponent,
-        CrearLibroComponent
+        CrearLibroComponent,
+        EdicionLibrosComponent
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

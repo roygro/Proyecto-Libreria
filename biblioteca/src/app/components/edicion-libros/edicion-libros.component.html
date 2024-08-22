@@ -1,0 +1,110 @@
+<!-- edicion-libros.component.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Libro</title>
+    <link rel="stylesheet" href="edicion-libros.component.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Panel de Control</h2>
+        <ul>
+            <li><a routerLink="/administrador">
+                 <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
+                 <span class="titulo">Inicio</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="person-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Usuarios</span>
+               </a>
+            </li>
+            <li><a routerLink="/listarBibliotecas">
+                <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Bibliotecas</span>
+                </a>
+            </li>
+            <li><a routerLink="/listarLibros">
+                <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Libros</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Salir</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <section id="EditBooks" class="container">
+        <h1>Editar Libro</h1>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="nomBook">Nombre del Libro:</label>
+                        <input id="nomBook" formControlName="nomBook" class="form-control" />
+                        <div *ngIf="editForm.get('nomBook')?.invalid && editForm.get('nomBook')?.touched" class="error-message">
+                            Nombre del libro es obligatorio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input id="descripcion" formControlName="descripcion" class="form-control" />
+                        <div *ngIf="editForm.get('descripcion')?.invalid && editForm.get('descripcion')?.touched" class="error-message">
+                            Descripción es obligatoria.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="autor">Autor:</label>
+                        <input id="autor" formControlName="autor" class="form-control" />
+                        <div *ngIf="editForm.get('autor')?.invalid && editForm.get('autor')?.touched" class="error-message">
+                            Autor es obligatorio.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="editorial">Editorial:</label>
+                        <input id="editorial" formControlName="editorial" class="form-control" />
+                        <div *ngIf="editForm.get('editorial')?.invalid && editForm.get('editorial')?.touched" class="error-message">
+                            Editorial es obligatoria.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="precioLibro">Precio:</label>
+                        <input id="precioLibro" formControlName="precioLibro" type="number" class="form-control" />
+                        <div *ngIf="editForm.get('precioLibro')?.invalid && editForm.get('precioLibro')?.touched" class="error-message">
+                            Precio es obligatorio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Imagen:</label>
+                        <input id="image" formControlName="image" class="form-control" />
+                        <div *ngIf="editForm.get('image')?.invalid && editForm.get('image')?.touched" class="error-message">
+                            Imagen es obligatoria.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="libraryEmail">Correo de Biblioteca:</label>
+                        <input id="libraryEmail" formControlName="libraryEmail" class="form-control" (blur)="onLibraryEmailBlur()" />
+                        <div *ngIf="editForm.get('libraryEmail')?.invalid && editForm.get('libraryEmail')?.touched" class="error-message">
+                            Correo de biblioteca es obligatorio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+        </form>
+    </section>
+
+</body>
+</html>
