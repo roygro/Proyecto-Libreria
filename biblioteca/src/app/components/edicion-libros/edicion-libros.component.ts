@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-edicion-libros',
+  selector: 'app-book-edit',
   templateUrl: './edicion-libros.component.html',
-  styleUrl: './edicion-libros.component.css'
+  styleUrls: ['./edicion-libros.component.css']
 })
 export class EdicionLibrosComponent {
 

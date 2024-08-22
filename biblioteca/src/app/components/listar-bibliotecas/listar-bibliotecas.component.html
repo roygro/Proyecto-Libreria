@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Bibliotecas</title>
+    <link rel="stylesheet" href="listar-bibliotecas.component.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Panel de Control</h2>
+        <ul>
+            <li><a href="administrador">
+                 <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
+                 <span class="titulo">Inicio</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="person-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Usuarios</span>
+               </a>
+            </li>
+            <li><a routerLink="listarBibliotecas">
+                <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Bibliotecas</span>
+                </a>
+            </li>
+            <li><a href="edicionLibro">
+                <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Libros</span>
+                </a>
+            </li>
+            <li><a href="#">
+                <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>&nbsp;
+                <span class="titulo">Salir</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <section id="ListLibraries" class="container">
+        <h1>Lista de Bibliotecas</h1>
+        <table class="library-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let biblioteca of bibliotecas">
+                    <td>{{ biblioteca.nombre }}</td>
+                    <td>{{ biblioteca.correo }}</td>
+                    <td>
+                        <button (click)="editarBiblioteca(biblioteca.idLibrary)" class="btn btn-edit">Editar</button>
+                        <button (click)="eliminarBiblioteca(biblioteca.idLibrary)" class="btn btn-delete">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>

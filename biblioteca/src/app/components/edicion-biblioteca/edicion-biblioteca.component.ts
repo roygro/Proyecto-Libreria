@@ -31,19 +31,29 @@ export class EdicionBibliotecaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.libraryId = Number(id);
-      this.loadLibraryData();
-    } else {
-      console.error('ID de biblioteca no encontrado en la ruta');
-    }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('libraryId');
+      if (id) {
+        this.libraryId = +id; // Convertir a número
+        this.loadLibraryData();
+      } else {
+        console.error('ID de biblioteca no encontrado en la ruta');
+      }
+    });
   }
-
+  
   loadLibraryData(): void {
     this.libraryService.getLibraryById(this.libraryId).subscribe(
       data => {
-        this.editLibraryForm.patchValue(data);
+        this.editLibraryForm = this.fb.group({
+          nombre: ['', Validators.required],
+          correo: ['', [Validators.required, Validators.email]],
+          contrasena: ['', Validators.required],
+          colonia: ['', Validators.required],
+          calle: ['', Validators.required],
+          numero: ['', Validators.required],
+          tarjeta: ['', Validators.required]
+        });
       },
       error => {
         console.error('Error al cargar los datos de la biblioteca:', error);
@@ -55,14 +65,16 @@ export class EdicionBibliotecaComponent implements OnInit {
     if (this.editLibraryForm.valid) {
       this.libraryService.updateLibrary(this.libraryId, this.editLibraryForm.value).subscribe(
         () => {
-          this.router.navigate(['/bibliotecas']); // Redirigir a la lista de bibliotecas o a donde corresponda
+          this.router.navigate(['/listarBibliotecas']); // Redirigir a la lista de bibliotecas
         },
         error => {
           console.error('Error al actualizar la biblioteca:', error);
         }
       );
     } else {
-      console.log('Formulario no válido');
+      console.log('Formulario no válido', this.editLibraryForm.errors);
+      // Puedes inspeccionar los errores del formulario aquí
     }
   }
+  
 }

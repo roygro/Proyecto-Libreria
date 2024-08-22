@@ -68,10 +68,12 @@ exports.createLibrary = async (req, res) => {
 // Actualizar una entrada de la biblioteca
 exports.updateLibrary = async (req, res) => {
   try {
+    // Actualizar la biblioteca con los datos enviados en el body de la solicitud
     const [updated] = await Library.update(req.body, {
-      where: { idLibrary: req.params.id } // Asegúrate de que 'idLibrary' sea correcto
+      where: { idLibrary: req.params.id }
     });
     if (updated) {
+      // Obtener la biblioteca actualizada y devolverla
       const updatedLibrary = await Library.findByPk(req.params.id);
       res.status(200).json(updatedLibrary);
     } else {
@@ -81,6 +83,7 @@ exports.updateLibrary = async (req, res) => {
     res.status(500).json({ message: 'Error al actualizar la biblioteca', error });
   }
 };
+
 
 // Eliminar una entrada de la biblioteca
 exports.deleteLibrary = async (req, res) => {

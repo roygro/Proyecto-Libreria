@@ -11,7 +11,7 @@
     <aside class="sidebar">
         <h2>Panel de Control</h2>
         <ul>
-            <li><a href="administrador">
+            <li><a routerLink="/administrador">
                  <span class="icono"><ion-icon name="home-outline"></ion-icon></span>&nbsp;
                  <span class="titulo">Inicio</span>
                 </a>
@@ -21,12 +21,12 @@
                 <span class="titulo">Usuarios</span>
                </a>
             </li>
-            <li><a routerLink="edicionBiblioteca/:libraryId">
+            <li><a routerLink="/listarBibliotecas">
                 <span class="icono"><ion-icon name="library-outline"></ion-icon></span>&nbsp;
                 <span class="titulo">Bibliotecas</span>
                 </a>
             </li>
-            <li><a href="edicionLibro">
+            <li><a routerLink="/listarLibros">
                 <span class="icono"><ion-icon name="book-outline"></ion-icon></span>&nbsp;
                 <span class="titulo">Libros</span>
                 </a>
@@ -46,30 +46,48 @@
                 <div class="form-column">
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" formControlName="nombre" required>
+                        <input type="text" id="nombre" formControlName="nombre">
+                        <div *ngIf="editLibraryForm.get('nombre')?.invalid && editLibraryForm.get('nombre')?.touched" class="error-message">
+                            Nombre es obligatorio.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo:</label>
-                        <input type="email" id="correo" formControlName="correo" required>
+                        <input type="email" id="correo" formControlName="correo">
+                        <div *ngIf="editLibraryForm.get('correo')?.invalid && editLibraryForm.get('correo')?.touched" class="error-message">
+                            Correo electrónico inválido.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="contrasena">Contraseña:</label>
-                        <input type="password" id="contrasena" formControlName="contrasena" required>
+                        <input type="password" id="contrasena" formControlName="contrasena">
+                        <div *ngIf="editLibraryForm.get('contrasena')?.invalid && editLibraryForm.get('contrasena')?.touched" class="error-message">
+                            Contraseña es obligatoria.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="colonia">Colonia:</label>
-                        <input type="text" id="colonia" formControlName="colonia" required>
+                        <input type="text" id="colonia" formControlName="colonia">
+                        <div *ngIf="editLibraryForm.get('colonia')?.invalid && editLibraryForm.get('colonia')?.touched" class="error-message">
+                            Colonia es obligatoria.
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-column">
                     <div class="form-group">
                         <label for="calle">Calle:</label>
-                        <input type="text" id="calle" formControlName="calle" required>
+                        <input type="text" id="calle" formControlName="calle">
+                        <div *ngIf="editLibraryForm.get('calle')?.invalid && editLibraryForm.get('calle')?.touched" class="error-message">
+                            Calle es obligatoria.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="numero">Número:</label>
-                        <input type="number" id="numero" formControlName="numero" required>
+                        <input type="number" id="numero" formControlName="numero">
+                        <div *ngIf="editLibraryForm.get('numero')?.invalid && editLibraryForm.get('numero')?.touched" class="error-message">
+                            Número es obligatorio.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="tarjeta">Tipo de Tarjeta:</label>

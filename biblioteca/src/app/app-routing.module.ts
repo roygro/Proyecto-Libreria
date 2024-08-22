@@ -16,7 +16,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { LibraryComponent } from './components/library/library.component';
 import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edicion-biblioteca.component';
 import { EditorComponent } from './components/editor/editor.component';
-import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
+import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
 
 const routes: Routes = [
   {
@@ -96,10 +96,17 @@ const routes: Routes = [
     path: 'administrador',
     component: EditorComponent
   },
-  {
+ /* {
     path: 'edicionLibro',
     component: EdicionLibrosComponent
+  },*/
+  { path: 'listarBibliotecas', 
+    component: ListarBibliotecasComponent
   },
+  { path: 'listarLibros', 
+    component: LibraryListComponent
+  },
+
  
   {
     path: '**',

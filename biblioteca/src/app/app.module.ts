@@ -26,9 +26,7 @@ import { EdicionBibliotecaComponent } from './components/edicion-biblioteca/edic
 import { EditorComponent } from './components/editor/editor.component';
 import { LibraryService } from './components/library.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
-
-
+import { ListarBibliotecasComponent } from './components/listar-bibliotecas/listar-bibliotecas.component';
 
 
 @NgModule({ declarations: [
@@ -51,7 +49,7 @@ import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libr
         LibraryComponent,
         EdicionBibliotecaComponent,
         EditorComponent,
-        EdicionLibrosComponent
+        ListarBibliotecasComponent
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
