@@ -18,6 +18,7 @@ import { ListarBibliotecasComponent } from './components/listar-bibliotecas/list
 import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
 import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
+import { AdministradorBibliotecaComponent } from './components/administrador-biblioteca/administrador-biblioteca.component';
 
 const routes: Routes = [
   {
@@ -86,7 +87,7 @@ const routes: Routes = [
     component: EdicionBibliotecaComponent
   },
   {
-    path: 'administrador',
+    path: 'superAdmin',
     component: EditorComponent
   },
   {
@@ -102,8 +103,9 @@ const routes: Routes = [
   { path: 'editarLibro/:id', 
     component: EdicionLibrosComponent
   },
-
- 
+  { path: 'administradorBiblioteca', 
+    component: AdministradorBibliotecaComponent
+  },
   {
     path: '**',
     redirectTo: '/home'

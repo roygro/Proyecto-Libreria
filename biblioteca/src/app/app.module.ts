@@ -27,6 +27,7 @@ import { ListarBibliotecasComponent } from './components/listar-bibliotecas/list
 import { ListadoLibrosComponent } from './components/listado-libros/listado-libros.component';
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
 import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
+import { AdministradorBibliotecaComponent } from './components/administrador-biblioteca/administrador-biblioteca.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -49,7 +50,8 @@ import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libr
         ListarBibliotecasComponent,
         ListadoLibrosComponent,
         CrearLibroComponent,
-        EdicionLibrosComponent
+        EdicionLibrosComponent,
+        AdministradorBibliotecaComponent
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

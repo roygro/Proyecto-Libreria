@@ -26,15 +26,24 @@ export class AuthService {
     const body = { correo, contrasena };
     return this.http.post<any>(`${this.apiUrl}/login`, body).pipe(
       tap(response => {
-        // Guardar el token y role en el almacenamiento local
+        console.log('Response:', response); // Verifica los datos de respuesta
+        
+        // Guardar el token y el rol en el almacenamiento local
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
-
-        // Redirigir según si el usuario tiene una biblioteca asociada
-        if (response.hasLibrary) {
-          this.router.navigate(['/administrador']);
-        } else {
+        console.log('Role guardado:', response.role);
+  
+        // Redirigir según el rol del usuario
+        const role = response.role;
+  
+        if (role === 'user') {
           this.router.navigate(['/home']);
+        } else if (role === 'admin') {
+          this.router.navigate(['/administradorBiblioteca']);
+        } else if (role === 'superAdmin') {
+          this.router.navigate(['/superAdmin']);
+        } else {
+          console.error('Rol desconocido:', role); // Agregar esta línea para casos inesperados
         }
       }),
       catchError(error => {
@@ -44,4 +53,5 @@ export class AuthService {
       })
     );
   }
+  
 }

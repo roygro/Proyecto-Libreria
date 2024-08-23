@@ -42,6 +42,7 @@ exports.login = async (req, res) => {
 
     console.log('Usuario encontrado:', user);
 
+    // Verifica la contraseña (asumiendo que está en texto plano; deberías usar bcrypt para encriptar la contraseña)
     const isMatch = contrasena.trim() === user.contrasena;
     if (!isMatch) {
       console.log('Contraseña no coincide para el usuario:', user.correo);
@@ -54,8 +55,14 @@ exports.login = async (req, res) => {
     const library = await Library.findOne({ where: { idUser: user.idUser } });
     const hasLibrary = !!library;
 
-    // Enviar la respuesta JSON con token, role y hasLibrary
-    const token = 'your_jwt_token_here'; // Aquí deberías generar un token JWT
+    // Generar token JWT
+    const token = jwt.sign(
+      { idUser: user.idUser, role: user.role },
+      'your_secret_key', // Debes usar una clave secreta segura
+      { expiresIn: '1h' }
+    );
+
+    // Responder con el token, role y hasLibrary
     res.status(200).json({
       message: 'Inicio de sesión exitoso',
       token: token,
@@ -68,8 +75,3 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: 'Error al iniciar sesión', error: error.message });
   }
 };
-
-
-
-
-

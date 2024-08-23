@@ -15,7 +15,7 @@ export class InicioSesionComponent {
 
   onSubmit() {
     this.error = ''; 
- 
+
     this.authService.login(this.credentials.correo, this.credentials.contrasena).subscribe({
       next: (response) => {
         console.log(response); // Verifica la respuesta aquí
@@ -25,11 +25,18 @@ export class InicioSesionComponent {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
 
-          // Redirigir en función de si el usuario tiene una biblioteca asociada
-          if (response.hasLibrary) {
-            this.router.navigate(['/administrador']);
-          } else {
+          // Redirigir en función del rol del usuario
+          const role = response.role;
+
+          if (role === 'user') {
             this.router.navigate(['/home']);
+          } else if (role === 'admin') {
+            this.router.navigate(['/administradorBiblioteca']);
+          } else if (role === 'superAdmin') {
+            this.router.navigate(['/superAdmin']);
+          } else {
+            this.error = 'Rol de usuario desconocido';
+            console.error('Rol desconocido:', role);
           }
         } else {
           this.error = 'Respuesta del servidor no válida';
