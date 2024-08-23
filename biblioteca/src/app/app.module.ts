@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LibrarysService } from './services/library.service';
 import { RouterModule } from '@angular/router';
 import { LibraryDetailComponent } from './components/library-detail/library-detail.component';
 import { HomeComponent } from './components/home/home.component';
@@ -64,7 +63,6 @@ import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libr
     ], 
     providers: [
         LibraryService,
-        LibrarysService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AppModule { }
