@@ -1,0 +1,160 @@
+<div class="admin-biblioteca-container">
+  <div class="form-container">
+    <div class="form-column">
+      <h2>Editar Biblioteca</h2>
+      <form [formGroup]="editLibraryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombre">Nombre de la Biblioteca</label>
+          <input id="nombre" formControlName="nombre" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo Electrónico</label>
+          <input id="correo" formControlName="correo" type="email" [disabled]="true" />
+        </div>
+
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input id="contrasena" formControlName="contrasena" type="password" />
+        </div>
+
+        <div class="form-group">
+          <label for="colonia">Colonia</label>
+          <input id="colonia" formControlName="colonia" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="calle">Calle</label>
+          <input id="calle" formControlName="calle" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="numero">Número</label>
+          <input id="numero" formControlName="numero" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="tarjeta">Tipo de Tarjeta</label>
+          <select id="tarjeta" formControlName="tarjeta">
+            <option value="Credito">Crédito</option>
+            <option value="Debito">Débito</option>
+          </select>
+        </div>
+
+        <button type="submit" [disabled]="!editLibraryForm.valid">Guardar Cambios</button>
+      </form>
+    </div>
+
+    <!-- Formulario para agregar un nuevo libro -->
+    <div class="form-column">
+      <h2>Agregar Nuevo Libro</h2>
+      <form [formGroup]="addBookForm" (ngSubmit)="onAddBook()">
+        <div class="form-group">
+          <label for="nomBook">Nombre del Libro</label>
+          <input id="nomBook" formControlName="nomBook" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input id="descripcion" formControlName="descripcion" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="autor">Autor</label>
+          <input id="autor" formControlName="autor" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="editorial">Editorial</label>
+          <input id="editorial" formControlName="editorial" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="precioLibro">Precio</label>
+          <input id="precioLibro" formControlName="precioLibro" type="number" />
+        </div>
+
+        <div class="form-group">
+          <label for="image">Imagen</label>
+          <input id="image" formControlName="image" type="text" />
+        </div>
+
+        <button type="submit" [disabled]="!addBookForm.valid">Agregar Libro</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<main>
+  <h2>Libros en la Biblioteca</h2>
+  <table class="library-table">
+    <thead>
+      <tr>
+        <th>Nombre del Libro</th>
+        <th>Descripción</th>
+        <th>Autor</th>
+        <th>Editorial</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.nomBook }}</td>
+        <td>{{ book.descripcion }}</td>
+        <td>{{ book.autor }}</td>
+        <td>{{ book.editorial }}</td>
+        <td>{{ book.precioLibro | currency }}</td>
+        <td>
+          <button (click)="onEditBook(book)">Editar</button>
+          <button (click)="onDeleteBook(book.idBook)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+
+
+
+<div class="admin-biblioteca-container">
+  <!-- Sección para editar libro -->
+  <div *ngIf="selectedBook" class="edit-book-container">
+    <div class="form-column">
+    <h2>Editar Libro</h2>
+    <form [formGroup]="editBookForm" (ngSubmit)="onUpdateBook()">
+      <div class="form-group">
+        <label for="nomBook">Nombre del Libro</label>
+        <input id="nomBook" formControlName="nomBook" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input id="descripcion" formControlName="descripcion" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="autor">Autor</label>
+        <input id="autor" formControlName="autor" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="editorial">Editorial</label>
+        <input id="editorial" formControlName="editorial" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="precioLibro">Precio</label>
+        <input id="precioLibro" formControlName="precioLibro" type="number" />
+      </div>
+
+      <div class="form-group">
+        <label for="image">Imagen</label>
+        <input id="image" formControlName="image" type="text" />
+      </div>
+
+      <button type="submit" [disabled]="!editBookForm.valid">Actualizar Libro</button>
+      <button type="button" (click)="cancelEdit()">Cancelar</button>
+    </form>
+    </div>
+  </div>
+</div>

@@ -30,13 +30,13 @@ export class BookService {
   }
 
   addBook(book: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, book).pipe(
+    return this.http.post(this.apiUrl, book).pipe(
       catchError(error => {
         console.error('Error en el servicio al agregar el libro:', error);
         return throwError(() => new Error('Error al agregar el libro'));
       })
     );
-  }
+  }  
 
   updateBook(id: number, book: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, book).pipe(
@@ -55,4 +55,15 @@ export class BookService {
       })
     );
   }
+  
+  getBooksByLibraryId(idLibrary: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/library/${idLibrary}`).pipe(
+      catchError(error => {
+        console.error('Error al obtener los libros de la biblioteca:', error);
+        return throwError(() => new Error('Error al obtener los libros de la biblioteca'));
+      })
+    );
+  }
+  
+  
 }

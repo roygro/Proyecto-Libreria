@@ -27,19 +27,31 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/login`, body).pipe(
       tap(response => {
         console.log('Response:', response); // Verifica los datos de respuesta
-        
-        // Guardar el token y el rol en el almacenamiento local
+  
+        // Guardar el token, el rol y el correo electrónico en el almacenamiento local
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
-        console.log('Role guardado:', response.role);
+        localStorage.setItem('email', response.email); // Guardar el correo electrónico
+
+        // Guardar el idLibrary en el almacenamiento local si está presente
+        if (response.idLibrary) {
+          localStorage.setItem('idLibrary', response.idLibrary);
+        }
   
         // Redirigir según el rol del usuario
         const role = response.role;
+        const idLibrary = response.idLibrary; // Obtén el idLibrary
+        const hasLibrary = response.hasLibrary; // Verifica si el usuario tiene biblioteca
   
         if (role === 'user') {
           this.router.navigate(['/home']);
         } else if (role === 'admin') {
-          this.router.navigate(['/administradorBiblioteca']);
+          if (hasLibrary) {
+            this.router.navigate([`/administradorBiblioteca/${idLibrary}`]); // Redirige con el idLibrary
+          } else {
+            console.error('El usuario no tiene una biblioteca asociada.');
+            // Maneja el caso donde no hay biblioteca asociada, redirigiendo o mostrando un mensaje
+          }
         } else if (role === 'superAdmin') {
           this.router.navigate(['/superAdmin']);
         } else {
@@ -53,5 +65,35 @@ export class AuthService {
       })
     );
   }
-  
+
+  // Verificar si el usuario es administrador
+  isAdmin(): boolean {
+    const role = localStorage.getItem('role');
+    return role === 'admin';
+  }
+
+  getLibraryId(): string | null {
+    return localStorage.getItem('idLibrary');
+  }
+
+  // Obtener el correo electrónico del usuario autenticado
+  getUserEmail(): string {
+    return localStorage.getItem('email') || '';
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken(); // Verifica si el token existe
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    localStorage.removeItem('idLibrary'); // Elimina también idLibrary
+    this.router.navigate(['/login']); // Redirigir al login después de cerrar sesión
+  }
 }

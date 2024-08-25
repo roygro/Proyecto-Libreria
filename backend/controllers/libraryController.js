@@ -1,3 +1,4 @@
+//libraryController.js
 const Library = require('../models/library');
 const User = require('../models/user');
 
@@ -11,19 +12,21 @@ exports.getAllLibraries = async (req, res) => {
   }
 };
 
-// Obtener una entrada de la biblioteca por ID
+// Obtener una biblioteca por su ID
 exports.getLibraryById = async (req, res) => {
   try {
-    const library = await Library.findByPk(req.params.id);
-    if (library) {
-      res.status(200).json(library);
-    } else {
-      res.status(404).json({ message: 'Biblioteca no encontrada' });
+    const library = await Library.findByPk(req.params.idLibrary);
+    if (!library) {
+      return res.status(404).json({ message: 'Biblioteca no encontrada' });
     }
+    res.status(200).json(library);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener la biblioteca', error });
+    console.error('Error al obtener la biblioteca:', error);
+    res.status(500).json({ message: 'Error al obtener la biblioteca' });
   }
 };
+
+
 
 // Crear una nueva biblioteca
 exports.createLibrary = async (req, res) => {
@@ -68,13 +71,11 @@ exports.createLibrary = async (req, res) => {
 // Actualizar una entrada de la biblioteca
 exports.updateLibrary = async (req, res) => {
   try {
-    // Actualizar la biblioteca con los datos enviados en el body de la solicitud
     const [updated] = await Library.update(req.body, {
-      where: { idLibrary: req.params.id }
+      where: { idLibrary: req.params.idLibrary } // Cambiado de req.params.id a req.params.idLibrary
     });
     if (updated) {
-      // Obtener la biblioteca actualizada y devolverla
-      const updatedLibrary = await Library.findByPk(req.params.id);
+      const updatedLibrary = await Library.findByPk(req.params.idLibrary); // Cambiado de req.params.id a req.params.idLibrary
       res.status(200).json(updatedLibrary);
     } else {
       res.status(404).json({ message: 'Biblioteca no encontrada' });
@@ -89,7 +90,7 @@ exports.updateLibrary = async (req, res) => {
 exports.deleteLibrary = async (req, res) => {
   try {
     const deleted = await Library.destroy({
-      where: { idLibrary: req.params.id }
+      where: { idLibrary: req.params.idLibrary } // Cambiado de req.params.id a req.params.idLibrary
     });
     if (deleted) {
       res.status(200).json({ message: 'Biblioteca eliminada' });
@@ -104,7 +105,7 @@ exports.deleteLibrary = async (req, res) => {
 // Obtener todas las bibliotecas de un usuario específico
 exports.getLibrariesByUserId = async (req, res) => {
   try {
-    const libraries = await Library.findAll({ where: { userId: req.params.userId } });
+    const libraries = await Library.findAll({ where: { idUser: req.params.idUser } });
     if (libraries.length > 0) {
       res.status(200).json(libraries);
     } else {
@@ -112,5 +113,21 @@ exports.getLibrariesByUserId = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener las bibliotecas del usuario', error });
+  }
+};
+
+// Obtener el idLibrary por correo
+exports.getLibraryByCorreo = async (req, res) => {
+  try {
+    const { correo } = req.params;
+    const library = await Library.findOne({ where: { correo } });
+
+    if (library) {
+      res.status(200).json({ idLibrary: library.idLibrary });
+    } else {
+      res.status(404).json({ message: 'Biblioteca no encontrada con ese correo' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al buscar la biblioteca por correo', error });
   }
 };

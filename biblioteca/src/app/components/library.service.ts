@@ -13,29 +13,43 @@ export class LibraryService {
 
   getAllLibraries(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
-      catchError((error: any) => {
+      catchError((error) => {
         console.error('Error al obtener las bibliotecas:', error);
         return throwError(() => new Error('Error al obtener las bibliotecas'));
       })
     );
   }
 
-  getLibraryById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
-      catchError((error: any) => {
+  getLibraryById(idLibrary: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${idLibrary}`).pipe(
+      catchError(error => {
         console.error('Error al obtener la biblioteca:', error);
         return throwError(() => new Error('Error al obtener la biblioteca'));
       })
     );
-  }
+  }  
 
   getLibraryByEmail(correo: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?correo=${correo}`);
+    return this.http.get<any>(`${this.apiUrl}/correo/${correo}`).pipe(
+      catchError((error) => {
+        console.error('Error al obtener la biblioteca por correo:', error);
+        return throwError(() => new Error('Error al obtener la biblioteca por correo'));
+      })
+    );
+  }
+
+  getLibrariesByUserId(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`).pipe(
+      catchError((error) => {
+        console.error('Error al obtener las bibliotecas del usuario:', error);
+        return throwError(() => new Error('Error al obtener las bibliotecas del usuario'));
+      })
+    );
   }
 
   addLibrary(library: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, library).pipe(
-      catchError((error: any) => {
+      catchError((error) => {
         if (error.status === 400 && error.error.message === 'Usuario no encontrado con ese correo') {
           return throwError(() => new Error('Correo no registrado'));
         }
@@ -47,16 +61,16 @@ export class LibraryService {
 
   updateLibrary(id: number, libraryData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, libraryData).pipe(
-      catchError((error: any) => {
+      catchError((error) => {
         console.error('Error al actualizar la biblioteca:', error);
         return throwError(() => new Error('Error al actualizar la biblioteca'));
       })
     );
-  }  
+  }
 
   deleteLibrary(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(
-      catchError((error: any) => {
+      catchError((error) => {
         console.error('Error al eliminar la biblioteca:', error);
         return throwError(() => new Error('Error al eliminar la biblioteca'));
       })

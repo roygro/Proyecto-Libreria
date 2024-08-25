@@ -1,4 +1,4 @@
-// controllers/userController.js
+// userController.js
 const jwt = require('jsonwebtoken'); // Asegúrate de tener este paquete instalado
 const User = require('../models/user');
 const Library = require('../models/library');
@@ -53,7 +53,9 @@ exports.login = async (req, res) => {
 
     // Verificar si el usuario tiene una biblioteca asociada
     const library = await Library.findOne({ where: { idUser: user.idUser } });
-    const hasLibrary = !!library;
+
+    // Obtén el idLibrary si existe la biblioteca
+    const idLibrary = library ? library.idLibrary : null;
 
     // Generar token JWT
     const token = jwt.sign(
@@ -62,12 +64,13 @@ exports.login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    // Responder con el token, role y hasLibrary
+    // Responder con el token, role, idLibrary, y hasLibrary
     res.status(200).json({
       message: 'Inicio de sesión exitoso',
       token: token,
       role: user.role,
-      hasLibrary: hasLibrary
+      idLibrary: idLibrary, // Incluye el idLibrary en la respuesta
+      hasLibrary: !!idLibrary // Modificado a true si idLibrary está presente
     });
 
   } catch (error) {

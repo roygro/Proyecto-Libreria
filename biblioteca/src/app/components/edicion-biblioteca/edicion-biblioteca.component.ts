@@ -11,7 +11,7 @@ import { LibraryService } from '../library.service';
 })
 export class EdicionBibliotecaComponent implements OnInit {
   editLibraryForm: FormGroup;
-  libraryId!: number;
+  idLibrary!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,9 +32,9 @@ export class EdicionBibliotecaComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('libraryId');
+      const id = params.get('idLibrary');
       if (id) {
-        this.libraryId = +id; // Convertir a número
+        this.idLibrary = +id; // Convertir a número
         this.loadLibraryData();
       } else {
         console.error('ID de biblioteca no encontrado en la ruta');
@@ -43,7 +43,7 @@ export class EdicionBibliotecaComponent implements OnInit {
   }
   
   loadLibraryData(): void {
-    this.libraryService.getLibraryById(this.libraryId).subscribe(
+    this.libraryService.getLibraryById(this.idLibrary).subscribe(
       data => {
         this.editLibraryForm = this.fb.group({
           nombre: ['', Validators.required],
@@ -63,7 +63,7 @@ export class EdicionBibliotecaComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editLibraryForm.valid) {
-      this.libraryService.updateLibrary(this.libraryId, this.editLibraryForm.value).subscribe(
+      this.libraryService.updateLibrary(this.idLibrary, this.editLibraryForm.value).subscribe(
         () => {
           this.router.navigate(['/listarBibliotecas']); // Redirigir a la lista de bibliotecas
         },

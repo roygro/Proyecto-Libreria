@@ -1,0 +1,161 @@
+.admin-biblioteca-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container {
+  display: flex; /* Utiliza flexbox para colocar los formularios en una fila */
+  flex-direction: row; /* Organiza los formularios en una fila */
+  gap: 20px; /* Espacio entre los formularios */
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-column {
+  flex: 1; /* Hace que los formularios se expandan en el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #41B3A2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.form-container h2 {
+  background-color: #007F73;
+  color: white;
+  padding: 30px;
+  text-align: left;
+}
+
+.edit-book-container {
+  margin-top: 40px; /* Espacio de 20px en la parte superior */
+  display: flex; /* Utiliza flexbox para colocar los formularios en una fila */
+  flex-direction: row; /* Organiza los formularios en una fila */
+  gap: 20px; /* Espacio entre los formularios */
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-book-container .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  margin-bottom: 20px;
+}
+
+.edit-book-container .form-column {
+  flex: 1; /* Hace que los formularios se expandan en el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-book-container h2{
+  background-color: #007F73;
+  color: white;
+  padding: 30px;
+  text-align: left;
+}
+
+h2 {
+
+  background-color: #007F73;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  margin: -20px -20px 20px -20px;
+}
+
+main {
+  margin-top: 40px; /* Espacio de 20px en la parte superior */
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  /*margin-left: 5px;  Margen para evitar que el contenido se superponga al panel lateral */
+}
+
+.library-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.library-table th, .library-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.library-table th {
+  background-color: #007F73;
+  color: white;
+}

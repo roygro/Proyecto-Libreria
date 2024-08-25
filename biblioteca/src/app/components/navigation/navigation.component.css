@@ -41,8 +41,22 @@
   .nav-item {
     margin: 0 10px; /* Espaciado entre los elementos de la navegación */
   }
-  
 
-  
-  
-  
+  .social-networks{
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-networks ion-icon {
+    color: black; /* esto al color que desees */
+    width: 60px; /* Establece el ancho del icono */
+    height: 60px; /* Establece la altura del icono */
+    font-size: 24px; /* Mantén el font-size consistente con el tamaño del icono */
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+  }
+
+  .social-networks ion-icon:hover {
+    color: #ffcc00; /* Color al pasar el cursor */
+  }

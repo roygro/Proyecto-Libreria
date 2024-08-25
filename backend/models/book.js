@@ -1,3 +1,4 @@
+//book.js (models)
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 

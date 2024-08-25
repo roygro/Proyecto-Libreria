@@ -83,7 +83,7 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
-    path: 'edicionBiblioteca/:libraryId',
+    path: 'edicionBiblioteca/:idLibrary',
     component: EdicionBibliotecaComponent
   },
   {
@@ -103,7 +103,7 @@ const routes: Routes = [
   { path: 'editarLibro/:id', 
     component: EdicionLibrosComponent
   },
-  { path: 'administradorBiblioteca', 
+  { path: 'administradorBiblioteca/:idLibrary', 
     component: AdministradorBibliotecaComponent
   },
   {
