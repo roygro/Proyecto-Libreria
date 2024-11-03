@@ -124,19 +124,30 @@
       </div>
     </div>
   </div>-->
+  
 
-  <div class="card-container">
-    <div class="card" *ngFor="let book of books" style="width: 18rem;">
+  
+
+
+    <!-- Tarjetas de libros -->
+<div class="card-container">
+  <div class="card" *ngFor="let book of books" style="width: 18rem;">
       <img [src]="book.image" class="card-img-top" [alt]="book.title" width="40" height="250">
       <div class="card-body">
-        <h5 class="card-title">{{ book.title }}</h5>
-        <p>{{ book.availability }}</p>
-        <a [routerLink]="['/library-detail', book.id]" class="btn btn-primary">Ver más</a>
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p>{{ book.availability }}</p>
+          <a [routerLink]="['/library-detail', book.id]" class="btn btn-primary">Ver más</a>
       </div>
-    </div>
   </div>
-  
-  
-  
+</div>
+
+
+    <!-- Otras partes de tu componente Home -->
+    <app-geolocalizacion></app-geolocalizacion>
+
+
+
+
+
 
   

@@ -1,8 +1,14 @@
 
 /* You can add global styles to this file, and also import other style files */
 body {
-    /*background-image: #FF0000;*/
-    background-color: #F8FAE5; /* Ruta a tu imagen de fondo */
+  /*background-image: url('assets/image1_0.jpg'); /* Ruta a tu imagen de fondo */
+    /*background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    /*background-repeat: no-repeat; /* Evita que la imagen se repita */
+
+
+
+/*fondo de color pastel*/
+    background-color: #b5a36a; /* Ruta a tu imagen de fondo */
     
   }
   

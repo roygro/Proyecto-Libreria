@@ -96,4 +96,13 @@ export class AuthService {
     localStorage.removeItem('idLibrary'); // Elimina también idLibrary
     this.router.navigate(['/login']); // Redirigir al login después de cerrar sesión
   }
+
+
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}`);
+  }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

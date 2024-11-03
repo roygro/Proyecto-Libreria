@@ -19,6 +19,9 @@ import { ListadoLibrosComponent } from './components/listado-libros/listado-libr
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
 import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
 import { AdministradorBibliotecaComponent } from './components/administrador-biblioteca/administrador-biblioteca.component';
+import { ListadoUsuariosComponent } from './components/listado-usuarios/listado-usuarios.component';
+import { GeolocalizacionComponent } from './components/geolocalizacion/geolocalizacion.component';
+import { AudiolibrosComponent } from './components/audiolibros/audiolibros.component';
 
 const routes: Routes = [
   {
@@ -100,11 +103,20 @@ const routes: Routes = [
   { path: 'listarLibros', 
     component: ListadoLibrosComponent
   },
+  { path: 'listarUsuarios', 
+    component: ListadoUsuariosComponent
+  },
   { path: 'editarLibro/:id', 
     component: EdicionLibrosComponent
   },
   { path: 'administradorBiblioteca/:idLibrary', 
     component: AdministradorBibliotecaComponent
+  },
+  {
+    path: 'geo', component: GeolocalizacionComponent
+  },
+  {
+    path: 'spotify', component: AudiolibrosComponent
   },
   {
     path: '**',

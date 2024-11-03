@@ -1,0 +1,11 @@
+<div>
+  <h2>Buscar Audiolibros</h2>
+  <input [(ngModel)]="query" placeholder="Buscar audiolibros" />
+  <button (click)="search()">Buscar</button>
+</div>
+
+<div *ngFor="let audiolibro of audiolibros">
+  <h3>{{ audiolibro.name }}</h3>
+  <p>{{ audiolibro.artists[0]?.name }}</p>
+  <img [src]="audiolibro.images[0]?.url" alt="{{ audiolibro.name }}" />
+</div>

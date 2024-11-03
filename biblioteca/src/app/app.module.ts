@@ -28,6 +28,11 @@ import { ListadoLibrosComponent } from './components/listado-libros/listado-libr
 import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
 import { EdicionLibrosComponent } from './components/edicion-libros/edicion-libros.component';
 import { AdministradorBibliotecaComponent } from './components/administrador-biblioteca/administrador-biblioteca.component';
+import { ListadoUsuariosComponent } from './components/listado-usuarios/listado-usuarios.component';
+import { GeolocalizacionComponent } from './components/geolocalizacion/geolocalizacion.component';
+import { IonicModule } from '@ionic/angular';
+import { RedesSocialesComponent } from './components/redes-sociales/redes-sociales.component';
+import { AudiolibrosComponent } from './components/audiolibros/audiolibros.component';
 
 
 @NgModule({ declarations: [
@@ -53,6 +58,11 @@ import { AdministradorBibliotecaComponent } from './components/administrador-bib
         CrearLibroComponent,
         EdicionLibrosComponent,
         AdministradorBibliotecaComponent,
+        ListadoUsuariosComponent,
+        GeolocalizacionComponent,
+        RedesSocialesComponent,
+        AudiolibrosComponent,
+        
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -62,7 +72,8 @@ import { AdministradorBibliotecaComponent } from './components/administrador-bib
         RouterModule.forRoot([]),
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        IonicModule.forRoot()
     ], 
     providers: [
         LibraryService,

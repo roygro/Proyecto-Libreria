@@ -1,8 +1,6 @@
 //userRoutes.js
 const express = require('express');
 const router = express.Router();
-
-// Asegúrate de que estás importando correctamente el controlador
 const userController = require('../controllers/userController');
 
 // Rutas para registro e inicio de sesión

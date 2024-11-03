@@ -13,6 +13,4 @@ router.delete('/:idBook', bookController.deleteBook);
 // Ruta para obtener libros por idLibrary
 router.get('/library/:idLibrary', bookController.getBooksByLibraryId);
 
-
-
 module.exports = router;
