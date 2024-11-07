@@ -1,0 +1,26 @@
+<div class="twitch-container">
+  <h2>Ver Transmisiones de Audiolibros o Libros</h2>
+
+  <!-- Dropdown para elegir la categoría -->
+  <label for="category">Filtrar por categoría:</label>
+  <select id="category" (change)="onCategoryChange($event)">
+    <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
+  </select>
+
+  <!-- Mensaje de carga -->
+  <div *ngIf="loading">
+    <p>Cargando transmisiones...</p>
+  </div>
+
+  <!-- Mostrar las transmisiones -->
+  <div *ngIf="streams.length > 0">
+    <div *ngFor="let stream of streams" class="stream">
+      <p><strong>{{ stream.user_name }}</strong> - {{ stream.title }}</p>
+      <img [src]="stream.thumbnail_url.replace('{width}', '300').replace('{height}', '200')" alt="Stream Thumbnail" />
+      <a [href]="'https://www.twitch.tv/' + stream.user_name" target="_blank">Ver en vivo</a>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay transmisiones -->
+  <p *ngIf="streams.length === 0 && !loading">No streams available.</p>
+</div>

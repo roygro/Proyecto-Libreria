@@ -1,0 +1,66 @@
+/* Estilos para el contenedor principal */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    background-color: #f5f5dc; /* Color de fondo claro */
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para la imagen */
+  li img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 4px;
+  }
+  
+  /* Estilos para el título y detalles */
+  li h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0;
+  }
+  
+  li p {
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Estilos para el enlace de compra */
+  li a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: auto;
+  }
+  
+  li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos adicionales para el botón de Facebook */
+  button {
+    margin: 15px 0;
+    padding: 10px 20px;
+    background-color: #4267B2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  button:hover {
+    background-color: #365899;
+  }
+  

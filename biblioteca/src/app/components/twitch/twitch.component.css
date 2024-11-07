@@ -1,0 +1,32 @@
+/* twitch.component.css */
+.twitch-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  select {
+    margin-bottom: 15px;
+  }
+  
+  .stream {
+    margin-bottom: 20px;
+  }
+  
+  .stream img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #6441a5;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

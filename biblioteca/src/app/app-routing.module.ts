@@ -22,6 +22,8 @@ import { AdministradorBibliotecaComponent } from './components/administrador-bib
 import { ListadoUsuariosComponent } from './components/listado-usuarios/listado-usuarios.component';
 import { GeolocalizacionComponent } from './components/geolocalizacion/geolocalizacion.component';
 import { AudiolibrosComponent } from './components/audiolibros/audiolibros.component';
+import { MercadolibreComponent } from './components/mercadolibre/mercadolibre.component';
+import { TwitchComponent } from './components/twitch/twitch.component';
 
 const routes: Routes = [
   {
@@ -117,6 +119,9 @@ const routes: Routes = [
   },
   {
     path: 'spotify', component: AudiolibrosComponent
+  },
+  {
+    path: 'audiolibros/twitch', component: TwitchComponent
   },
   {
     path: '**',

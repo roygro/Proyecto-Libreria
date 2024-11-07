@@ -95,6 +95,9 @@
 <!-- Botón para iniciar sesión con Facebook -->
 <button onclick="loginWithFacebook()">Iniciar Sesión con Facebook</button>
 
+<!-- Ícono de usuario donde se mostrará la foto de perfil -->
+<img id="userIcon" src="https://s3.amazonaws.com/org.kellenberg.www-media/wp-content/uploads/2019/10/04112751/facebook-user-icon-19.jpg" alt="User Icon" width="50" height="50" />
+
 <!-- SDK de Facebook -->
 <script>
     window.fbAsyncInit = function() {
@@ -104,11 +107,6 @@
             xfbml      : true,
             version    : 'v21.0' // Cambia a la versión que deseas utilizar
         });
-
-        // No es necesario verificar el estado de inicio de sesión al cargar
-        // FB.getLoginStatus(function(response) {
-        //     statusChangeCallback(response);
-        // });
 
         FB.AppEvents.logPageView();   
     };
@@ -123,24 +121,20 @@
 
     // Callback para manejar el cambio de estado
     function statusChangeCallback(response) {
-        console.log('FB Login Status:', response);
-        // Verifica si el usuario está conectado
         if (response.status === 'connected') {
-            console.log('Usuario conectado');
+            const userID = response.authResponse.userID;
+            console.log('Usuario conectado, UserID:', userID);
 
-            // Accede a authResponse
-            const authResponse = response.authResponse;
-            const accessToken = authResponse.accessToken;
-            const expiresIn = authResponse.expiresIn;
-            const signedRequest = authResponse.signedRequest;
-            const userID = authResponse.userID;
-
-            console.log('Access Token:', accessToken);
-            console.log('Expires In:', expiresIn);
-            console.log('Signed Request:', signedRequest);
-            console.log('User ID:', userID);
-
-            // Aquí puedes hacer algo con el accessToken, como realizar llamadas a la API
+            // Llamada a la API de Facebook para obtener la foto de perfil
+            FB.api(`/${userID}/picture?type=large`, function(response) {
+                if (response && !response.error) {
+                    // Actualizar la imagen del ícono de usuario con la URL de la foto de perfil
+                    document.getElementById('userIcon').src = response.data.url;
+                    console.log('Foto de perfil actualizada:', response.data.url);
+                } else {
+                    console.error('Error al obtener la foto de perfil:', response.error);
+                }
+            });
         } else {
             console.log('Usuario no conectado');
         }
@@ -154,6 +148,9 @@
     }
 </script>
 
+
+<!-- Código de instalación Cliengo para localhost:4200 -->
+<script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/672a6aceaf0b6707564219db/672a6aceaf0b6707564219de.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
 
 <!-- Footer -->
 <footer class="bg-dark text-white py-4 mt-auto">

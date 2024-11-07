@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LibraryDetailComponent } from './components/library-detail/library-detail.component';
@@ -33,6 +33,9 @@ import { GeolocalizacionComponent } from './components/geolocalizacion/geolocali
 import { IonicModule } from '@ionic/angular';
 import { RedesSocialesComponent } from './components/redes-sociales/redes-sociales.component';
 import { AudiolibrosComponent } from './components/audiolibros/audiolibros.component';
+import { MercadolibreComponent } from './components/mercadolibre/mercadolibre.component';
+import { TwitchComponent } from './components/twitch/twitch.component';
+import { MercadolibreService } from './components/mercadolibre.service';
 
 
 @NgModule({ declarations: [
@@ -62,6 +65,8 @@ import { AudiolibrosComponent } from './components/audiolibros/audiolibros.compo
         GeolocalizacionComponent,
         RedesSocialesComponent,
         AudiolibrosComponent,
+        MercadolibreComponent,
+        TwitchComponent,
         
     ],
 
@@ -73,10 +78,12 @@ import { AudiolibrosComponent } from './components/audiolibros/audiolibros.compo
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        IonicModule.forRoot()
+        IonicModule.forRoot(),
+        HttpClientModule
     ], 
     providers: [
         LibraryService,
+        MercadolibreService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AppModule { }

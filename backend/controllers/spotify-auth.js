@@ -9,17 +9,19 @@ const auth = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 // Función para obtener el token de acceso
 async function getSpotifyToken() {
   try {
-    const response = await axios.post('https://accounts.spotify.com/api/token', 'grant_type=client_credentials', {
-      headers: {
-        'Authorization': `Basic ${auth}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    });
-    return response.data.access_token;
+      const response = await axios.post('https://accounts.spotify.com/api/token', 'grant_type=client_credentials', {
+          headers: {
+              'Authorization': `Basic ${auth}`,
+              'Content-Type': 'application/x-www-form-urlencoded',
+          },
+      });
+      console.log('Token de acceso obtenido:', response.data.access_token); // Log para verificar el token
+      return response.data.access_token;
   } catch (error) {
-    console.error('Error al obtener el token de acceso:', error);
-    throw error;
+      console.error('Error al obtener el token de acceso:', error);
+      throw error;
   }
 }
+
 
 module.exports = { getSpotifyToken };

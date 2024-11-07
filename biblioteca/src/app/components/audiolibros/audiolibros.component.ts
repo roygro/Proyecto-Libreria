@@ -1,25 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotifyService } from '../spotify.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-audiolibros',
   templateUrl: './audiolibros.component.html',
+  styleUrls: ['./audiolibros.component.css']
 })
 export class AudiolibrosComponent implements OnInit {
-  audiolibros: any[] = [];
-  query: string = 'audiobook'; // Puedes usar un término predeterminado o dejarlo vacío
+  audiolibros: any[] = []; // Almacena los audiolibros
+  query: string = ''; // Almacena la consulta de búsqueda
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.search(); // Llama al método de búsqueda al iniciar el componente
+    this.getAudiobooks(); // Cargar audiolibros al inicio
   }
 
-  search() {
-    this.spotifyService.searchAudiobooks(this.query).subscribe(
-      (data) => {
-        console.log('Datos recibidos:', data); // Verifica la estructura de los datos
-        this.audiolibros = data.items; // Ajusta según la estructura de la respuesta
+  getAudiobooks(): void {
+    const url = 'http://localhost:3000/spotify/audiobooks';
+    
+    this.http.get<any>(url).subscribe(
+      (response) => {
+        console.log('Respuesta de audiolibros:', response); // Log para verificar la respuesta
+        this.audiolibros = response.categories.items; // Ajusta esto según la estructura real de la respuesta
+      },
+      (error) => {
+        console.error('Error al obtener los audiolibros:', error);
+      }
+    );
+  }
+
+  search(): void {
+    const url = `http://localhost:3000/spotify/audiobooks?query=${this.query}`;
+    
+    this.http.get<any>(url).subscribe(
+      (response) => {
+        console.log('Resultados de búsqueda:', response);
+        this.audiolibros = response.categories.items; // Ajusta esto según la estructura real de la respuesta
       },
       (error) => {
         console.error('Error al buscar audiolibros:', error);
