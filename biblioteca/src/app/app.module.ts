@@ -36,6 +36,8 @@ import { AudiolibrosComponent } from './components/audiolibros/audiolibros.compo
 import { MercadolibreComponent } from './components/mercadolibre/mercadolibre.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
 import { MercadolibreService } from './components/mercadolibre.service';
+import { PagoComponent } from './components/pago/pago.component';
+import { AuthorListComponent } from './components/author-list/author-list.component';
 
 
 @NgModule({ declarations: [
@@ -67,6 +69,8 @@ import { MercadolibreService } from './components/mercadolibre.service';
         AudiolibrosComponent,
         MercadolibreComponent,
         TwitchComponent,
+        PagoComponent,
+        AuthorListComponent
         
     ],
 

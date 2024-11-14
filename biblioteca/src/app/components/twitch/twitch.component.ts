@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';  // Importa DomSanitizer
 import { TwitchService } from '../twitch.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class TwitchComponent implements OnInit {
   selectedCategory: string = 'audiobooks'; // Categoría por defecto
   loading: boolean = false; // Para mostrar el estado de carga
 
-  constructor(private twitchService: TwitchService) {}
+  constructor(
+    private twitchService: TwitchService,
+    private sanitizer: DomSanitizer  // Inyecta DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.loadStreams(); // Cargar las transmisiones al iniciar
@@ -47,4 +51,13 @@ export class TwitchComponent implements OnInit {
     this.selectedCategory = event.target.value;
     this.loadStreams(); // Recargar los streams al cambiar la categoría
   }
+
+  // Función para sanear la URL del iframe
+  getSanitizedUrl(channelName: string): any {
+    const parentDomain = window.location.hostname;  // Obtener el dominio dinámicamente
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://player.twitch.tv/?channel=${channelName}&parent=${parentDomain}`
+    );
+  }
+  
 }

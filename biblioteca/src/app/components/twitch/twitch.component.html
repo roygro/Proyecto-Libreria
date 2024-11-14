@@ -16,11 +16,22 @@
   <div *ngIf="streams.length > 0">
     <div *ngFor="let stream of streams" class="stream">
       <p><strong>{{ stream.user_name }}</strong> - {{ stream.title }}</p>
-      <img [src]="stream.thumbnail_url.replace('{width}', '300').replace('{height}', '200')" alt="Stream Thumbnail" />
-      <a [href]="'https://www.twitch.tv/' + stream.user_name" target="_blank">Ver en vivo</a>
+
+      <!-- Reproductor embebido de Twitch -->
+      <iframe
+      *ngIf="stream.user_name && stream.user_name.trim() !== ''"
+      [src]="getSanitizedUrl(stream.user_name)"
+      height="300"
+      width="500"
+      allowfullscreen>
+    </iframe>
+    
+      <!-- Enlace a Twitch en caso de que el usuario quiera abrirlo en otra pestaña -->
+       <p></p>
+      <a [href]="'https://www.twitch.tv/' + stream.user_name" target="_blank">Ver en vivo en Twitch</a>
     </div>
   </div>
 
   <!-- Mensaje si no hay transmisiones -->
-  <p *ngIf="streams.length === 0 && !loading">No streams available.</p>
+  <p *ngIf="streams.length === 0 && !loading">No hay transmisiones disponibles.</p>
 </div>

@@ -1,0 +1,25 @@
+<div class="author-search">
+  <h2>Buscar Autores</h2>
+  <input type="text" [(ngModel)]="query" placeholder="Escribe el nombre del autor" />
+  <button (click)="searchAuthors()">Buscar</button>
+
+  <div *ngIf="authors.length > 0">
+    <h3>Resultados:</h3>
+    <div *ngFor="let author of authors">
+      <div class="author-info">
+        <img *ngIf="author.cover_i" [src]="getCoverImage(author.cover_i)" alt="Imagen de la portada" />
+        <div>
+          <p><strong>Nombre:</strong> {{ author.name }}</p>
+          <p><strong>Año de nacimiento:</strong> {{ author.birth_date }}</p>
+          <p><strong>Primera publicación:</strong> {{ author.first_publish_year }}</p>
+          <p><strong>Biografía:</strong> {{ author.bio }}</p>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+
+  <div *ngIf="authors.length === 0 && query">
+    <p class="no-results">No se encontraron autores con el nombre "{{ query }}"</p>
+  </div>
+</div>
