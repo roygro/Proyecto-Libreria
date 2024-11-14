@@ -1,0 +1,26 @@
+<div class="search-container">
+    <input [(ngModel)]="query" placeholder="Buscar libros..." />
+    <button (click)="searchBooks()">Buscar</button>
+  </div>
+  
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+  <div class="content">
+    <div class="results">
+      <ul>
+        <li *ngFor="let book of books" (click)="selectBook(book)">
+          <img [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'" alt="Portada" />
+          <div>{{ book.title }}</div>
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="selectedBook" class="book-details">
+      <img *ngIf="selectedBook.cover_i" [src]="'https://covers.openlibrary.org/b/id/' + selectedBook.cover_i + '-L.jpg'" alt="Portada" />
+      <h2>{{ selectedBook.title }}</h2>
+      <p><strong>Autor:</strong> {{ selectedBook.author_name?.join(', ') }}</p>
+      <p><strong>Año de publicación:</strong> {{ selectedBook.first_publish_year }}</p>
+      <p><strong>Sinopsis:</strong> {{ selectedBook.description?.value || selectedBook.description || 'Sin sinopsis disponible' }}</p>
+    </div>
+  </div>
+  

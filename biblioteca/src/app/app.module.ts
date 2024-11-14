@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; //asi se indica que hay elemntos personalizados
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'; // Importa CommonModule aquí
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -37,7 +38,8 @@ import { MercadolibreComponent } from './components/mercadolibre/mercadolibre.co
 import { TwitchComponent } from './components/twitch/twitch.component';
 import { MercadolibreService } from './components/mercadolibre.service';
 import { PagoComponent } from './components/pago/pago.component';
-import { AuthorListComponent } from './components/author-list/author-list.component';
+import { BookSearchComponent } from './components/book-search/book-search.component';
+import { BookDataService } from './components/BookDataService';
 
 
 @NgModule({ declarations: [
@@ -70,12 +72,13 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
         MercadolibreComponent,
         TwitchComponent,
         PagoComponent,
-        AuthorListComponent
+        BookSearchComponent,
         
     ],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent], 
+    exports: [BookSearchComponent], // Exporta si lo usas fuera de este módulo
     imports: [
         BrowserModule,
         RouterModule.forRoot([]),
@@ -83,11 +86,13 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
         FormsModule,
         ReactiveFormsModule,
         IonicModule.forRoot(),
-        HttpClientModule
+        HttpClientModule,
+        CommonModule,
     ], 
     providers: [
         LibraryService,
         MercadolibreService,
+        BookDataService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AppModule { }
