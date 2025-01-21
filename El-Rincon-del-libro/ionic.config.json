@@ -1,0 +1,7 @@
+{
+  "name": "El-Rincon-del-libro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

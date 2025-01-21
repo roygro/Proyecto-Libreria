@@ -1,0 +1,22 @@
+<div class="factura-container">
+    <!-- Contenedor solo con la factura -->
+    <div id="invoice-content">
+      <h2>Factura de Compra</h2>
+      <p><strong>Nombre del Pagador:</strong> {{ payerName }}</p>
+      <p><strong>ID de Transacción:</strong> {{ transactionId }}</p>
+      <p><strong>Total:</strong> ${{ amount }}</p>
+      <p><strong>Fecha y Hora de Compra:</strong> {{ purchaseDate }}</p>
+      <hr />
+      <h2>Detalles del Libro</h2>
+      <p><strong>Título:</strong> {{ bookTitle }}</p>
+      <p><strong>Precio:</strong> ${{ bookPrice }}</p>
+      <p><strong>ISBN:</strong> {{ bookISBN }}</p>
+    </div>
+    
+    <!-- Botones fuera de la captura -->
+    <div class="button-group">
+      <button (click)="volver()">Volver a Inicio</button>
+      <button (click)="generateInvoiceFromHTML()">Descargar Factura</button>
+    </div>
+  </div>
+  

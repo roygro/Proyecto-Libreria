@@ -1,0 +1,18 @@
+<input type="text" #authorName placeholder="Buscar autor">
+<button (click)="searchAuthors(authorName.value)">Buscar</button>
+
+<div *ngFor="let author of searchResults">
+  <button (click)="authorDetails(author.key)">{{ author.name }}</button>
+</div>
+
+<div *ngIf="authorDetails">
+  <h2>{{ authorDetails.name }}</h2>
+  <button (click)="getAuthorWorks(authorDetails.key)">Ver Obras</button>
+</div>
+
+<div *ngIf="authorWorks">
+  <h3>Obras de {{ authorDetails.name }}</h3>
+  <ul>
+    <li *ngFor="let work of authorWorks">{{ work.title }}</li>
+  </ul>
+</div>

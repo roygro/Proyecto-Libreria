@@ -40,6 +40,11 @@ import { MercadolibreService } from './components/mercadolibre.service';
 import { PagoComponent } from './components/pago/pago.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 import { BookDataService } from './components/BookDataService';
+import { GoogleBooksComponent } from './components/googlebooks/googlebooks.component';
+import { FacturaComponent } from './components/factura/factura.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
+import { SpotifyComponent } from './components/spotify/spotify.component';
+import { ConsumoBuscadorAutorComponent } from './components/consumo-buscador-autor/consumo-buscador-autor.component';
 
 
 @NgModule({ declarations: [
@@ -73,6 +78,11 @@ import { BookDataService } from './components/BookDataService';
         TwitchComponent,
         PagoComponent,
         BookSearchComponent,
+        FacturaComponent,
+        PaypalComponent,
+        GoogleBooksComponent,
+        SpotifyComponent,
+        
         
     ],
 

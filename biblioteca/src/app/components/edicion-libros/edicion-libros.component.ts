@@ -5,9 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { LibraryService } from '../library.service';
 
+
 @Component({
   selector: 'app-edicion-libros',
-  templateUrl: './edicion-libros.component.html'
+  templateUrl: './edicion-libros.component.html',
+  styleUrls: ['./edicion-libros.component.css'] 
 })
 export class EdicionLibrosComponent implements OnInit {
   editForm: FormGroup;

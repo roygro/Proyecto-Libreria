@@ -143,6 +143,9 @@
               </div>
             </div>
           </div>
+          <button [routerLink]="['/paypal']" [queryParams]="{ price: bookDetails.price, title: bookDetails.title, isbn: bookDetails.isbn }" class="btn btn-primary">
+            Ir a Pago
+          </button>
         </div>
       </div>
     </div>

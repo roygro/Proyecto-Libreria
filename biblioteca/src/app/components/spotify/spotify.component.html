@@ -1,0 +1,38 @@
+<div class="spotify-container">
+    <button *ngIf="!accessToken" (click)="login()">Iniciar sesión con Spotify</button>
+  
+    <div *ngIf="accessToken">
+      <h2>Buscar Audiolibros</h2>
+      <div class="search-bar">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          placeholder="Buscar audiolibros..."
+        />
+        <button (click)="search()">Buscar</button>
+      </div>
+  
+      <h2>Resultados de Audiolibros</h2>
+      <ul class="playlist-list">
+        <li *ngFor="let playlist of playlists" (click)="selectPlaylist(playlist.id)">
+          <img [src]="playlist.images[0]?.url" alt="Imagen de la playlist" />
+          <div>
+            <h3>{{ playlist.name }}</h3>
+            <p>{{ playlist.tracks.total }} canciones</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Mostrar reproductor de Spotify Embed -->
+    <div *ngIf="selectedPlaylistUrl" class="player">
+      <iframe
+        [src]="selectedPlaylistUrl"
+        width="100%"
+        height="380"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </div>
+  </div>
+  

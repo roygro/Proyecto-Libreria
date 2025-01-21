@@ -24,6 +24,9 @@ import { GeolocalizacionComponent } from './components/geolocalizacion/geolocali
 import { AudiolibrosComponent } from './components/audiolibros/audiolibros.component';
 import { MercadolibreComponent } from './components/mercadolibre/mercadolibre.component';
 import { TwitchComponent } from './components/twitch/twitch.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
+import { GoogleBooksComponent } from './components/googlebooks/googlebooks.component';
+import { FacturaComponent } from './components/factura/factura.component';
 
 const routes: Routes = [
   {
@@ -124,9 +127,12 @@ const routes: Routes = [
     path: 'audiolibros/twitch', component: TwitchComponent
   },
   {
+    path: 'factura', component: FacturaComponent},
+  { path: 'paypal', component: PaypalComponent },
+  {
     path: '**',
     redirectTo: '/home'
-  }
+  }, 
 ];
 
 

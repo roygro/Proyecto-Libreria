@@ -1,0 +1,19 @@
+
+<div class="search-container">
+    <h2>Buscar Libros con GOOGLE E-BOOCKS</h2>
+    <input type="text" [(ngModel)]="query" placeholder="Escribe un título o autor" />
+    <button (click)="searchBooks()">Buscar</button>
+  
+    <div *ngIf="loading">Cargando...</div>
+    <div *ngIf="error">{{ error }}</div>
+  
+    <div *ngIf="books.length > 0">
+      <div *ngFor="let book of books" class="book-card">
+        <img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="{{ book.volumeInfo.title }}" />
+        <h3>{{ book.volumeInfo.title }}</h3>
+        <p><strong>Autores:</strong> {{ book.volumeInfo.authors?.join(', ') }}</p>
+        <p>{{ book.volumeInfo.description }}</p>
+      </div>
+    </div>
+  </div>
+  
