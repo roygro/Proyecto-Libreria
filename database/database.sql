@@ -1,4 +1,70 @@
-CREATE DATABASE ng_BookShop;
+-- Crear tabla 'users'
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  idUser int NOT NULL AUTO_INCREMENT,
+  nombre varchar(100) NOT NULL,
+  correo varchar(100) NOT NULL,
+  telefono varchar(15) NOT NULL,
+  contrasena varchar(255) NOT NULL,
+  role enum('user','admin','superAdmin') DEFAULT 'user',
+  PRIMARY KEY (idUser),
+  UNIQUE KEY correo (correo)
+);
+
+-- Insertar datos en 'users'
+INSERT INTO users (idUser, nombre, correo, telefono, contrasena, role)
+VALUES 
+(1, 'roy', 'princess18gro@gmail.com', '4686804560', 'Riverdale', 'admin'),
+(2, 'mirza', 'natzllyuni@gmail.com', '4155668881', 'mirza', 'superAdmin');
+
+-- Crear tabla 'library'
+DROP TABLE IF EXISTS library;
+CREATE TABLE library (
+  idLibrary int NOT NULL AUTO_INCREMENT,
+  idUser int DEFAULT NULL,
+  nombre varchar(255) NOT NULL,
+  correo varchar(255) NOT NULL,
+  contrasena varchar(255) NOT NULL,
+  colonia varchar(100) NOT NULL,
+  calle varchar(100) NOT NULL,
+  numero varchar(10) NOT NULL,
+  tarjeta varchar(20) NOT NULL,
+  PRIMARY KEY (idLibrary),
+  UNIQUE KEY correo (correo),
+  KEY idUser (idUser),
+  CONSTRAINT library_ibfk_1 FOREIGN KEY (idUser) REFERENCES users (idUser)
+);
+
+-- Insertar datos en 'library'
+INSERT INTO library (idLibrary, idUser, nombre, correo, contrasena, colonia, calle, numero, tarjeta)
+VALUES 
+(1, 1, 'Biblioteca Central', 'princess18gro@gmail.com', 'Riverdale', 'Lindavista', 'Pinos', '34', 'debit');
+
+-- Crear tabla 'book'
+DROP TABLE IF EXISTS book;
+CREATE TABLE book (
+  idBook int NOT NULL AUTO_INCREMENT,
+  idLibrary int DEFAULT NULL,
+  nomBook varchar(30) NOT NULL,
+  descripcion varchar(250) NOT NULL,
+  autor varchar(30) NOT NULL,
+  editorial varchar(30) NOT NULL,
+  precioLibro decimal(10,2) NOT NULL,
+  image varchar(200) NOT NULL,
+  PRIMARY KEY (idBook),
+  KEY idLibrary (idLibrary),
+  CONSTRAINT book_ibfk_1 FOREIGN KEY (idLibrary) REFERENCES library (idLibrary)
+);
+
+-- Insertar datos en 'book'
+INSERT INTO book (idBook, idLibrary, nomBook, descripcion, autor, editorial, precioLibro, image)
+VALUES 
+(1, 1, 'Las crónicas de narnia', 'Viajes al fin del mundo', 'C.S. Lewis', 'HarperCollins Espanol', 365.00, 'https://m.media-amazon.com/images/I/91hkAAEpLIL.SY522.jpg');
+
+
+
+
+/*CREATE DATABASE ng_BookShop;
 USE ng_BookShop;
 
 CREATE TABLE usuarios (
@@ -85,3 +151,4 @@ CREATE TABLE multas (
 
 INSERT INTO usuarios (idUsuario, nombre, apellido, email,telefono,colonia,calle,numero,contraseña)
 VALUES ('U001', 'Mirza', 'Morales', 'natzllyuni@gmail.com', '4155668881', 'Indepencia','Francisco Montes de Oca','16','795135*M');
+*/
